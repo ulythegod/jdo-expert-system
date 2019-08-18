@@ -1,0 +1,2655 @@
+<mapping>
+    <package name="core.data">
+
+        <class name="AgricultureField">
+            <jdbc-class-map type="base" table="Agriculture_Fields"/>
+            <field name="agricultureFieldId">
+                <jdbc-field-map type="value" column="id_field"/>
+            </field>
+            <field name="fieldNumber">
+                <jdbc-field-map type="value" column="fieldNumber"/>
+            </field>
+            <field name="typeOfSoil">
+                <jdbc-field-map type="one-one" column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="area">
+                <jdbc-field-map type="value" column="area"/>
+            </field>
+            <field name="calcArea">
+                <jdbc-field-map type="value" column="calc_area"/>
+            </field>
+            <field name="calcHeithtArea">
+                <jdbc-field-map type="value" column="calc_height_area"/>
+            </field>
+            <field name="color">
+                <jdbc-field-map type="value" column="color"/>
+            </field>
+            <field name="poligon">
+                <jdbc-field-map type="one-many" table="POINT" ref-column.ID_FIELD="ID_FIELD"/>
+            </field>
+            <field name="landBase_2_agricultureField">
+                <jdbc-field-map type="one-many" table="land_base_2_agriculture_field" ref-column.ID_FIELD="ID_FIELD"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="cropRotationOfAgriculture_2_AgricultureField">
+                <jdbc-field-map type="one-many" table="crop_rotation_of_agriculture_2_field_agriculture" ref-column.ID_FIELD="ID_FIELD"/>
+            </field>
+            <field name="crop_2_AgricultureField_2_Year">
+                <jdbc-field-map type="one-many" table="crop_2_agriculture_field_2_year" ref-column.ID_FIELD="ID_FIELD"/>
+            </field>
+            <field name="resultsMode1">
+                <jdbc-field-map type="one-many" table="results_mode1" ref-column.ID_FIELD="agriculture_field"/>
+            </field>
+            <field name="resultsMode2">
+                <jdbc-field-map type="one-many" table="results_mode2" ref-column.ID_FIELD="agriculture_field"/>
+            </field>
+            <field name="resultsFertilizers">
+                <jdbc-field-map type="one-many" table="results_fertilizers" ref-column.ID_FIELD="agriculture_field"/>
+            </field>
+            <field name="topsoilDepth">
+                <jdbc-field-map type="value" column="topsoil_depth"/>
+            </field>
+            <field name="soilBulk">
+                <jdbc-field-map type="value" column="soil_bulk"/>
+            </field>
+        </class>
+
+        <class name="Agricultures">
+            <jdbc-class-map type="base" table="agricultures"/>
+            <field name="agricultureId">
+                <jdbc-field-map type="value" column="id_agriculture"/>
+            </field>
+            <field name="name">
+                <jdbc-field-map type="value" column="name"/>
+            </field>
+            <field name="description">
+                <jdbc-field-map type="value" column="description"/>
+            </field>
+            <field name="address">
+                <jdbc-field-map type="value" column="address"/>
+            </field>
+            <field name="latitude">
+                <jdbc-field-map type="value" column="latitude"/>
+            </field>
+            <field name="longitude">
+                <jdbc-field-map type="value" column="longitude"/>
+            </field>
+            <field name="agricultureFields">
+                <jdbc-field-map type="one-many" table="agriculture_fields"
+                                ref-column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="user">
+                <jdbc-field-map type="one-one" column.id_user="id_user"/>
+            </field>
+            <field name="cropRotationsOfAgriculture">
+                <jdbc-field-map type="one-many" table="crop_rotations_of_agriculture"
+                                ref-column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="typeOfSoils">
+                <jdbc-field-map type="one-many" table="type_of_soil_2_agriculture"
+                                ref-column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="landBases">
+                <jdbc-field-map type="one-many" table="land_base"
+                                ref-column.id_agriculture="id_agriculture"/>
+            </field>
+        </class>
+
+        <class name="AgrochemicalSoilSurvey">
+            <jdbc-class-map type="base" table="agrochemical_soil_survey"/>
+            <field name="agrochemicalSoilSurveyId">
+                <jdbc-field-map type="value" column="id_survey"/>
+            </field>
+            <field name="date">
+                <jdbc-field-map type="value" column="date"/>
+            </field>
+            <field name="landBase">
+                <jdbc-field-map type="one-one" column.id_land_base="id_land_base"/>
+            </field>
+        </class>
+
+        <class name="ApplicationOfFertilizers">
+            <jdbc-class-map type="base" table="Application_Of_Fertilizers"/>
+            <field name="applicationOfFertilizersId">
+                <jdbc-field-map type="value" column="id_operation"/>
+            </field>
+            <field name="codeApplicationOfFertilizers">
+                <jdbc-field-map type="value" column="cod_operation"/>
+            </field>
+            <field name="descriptionApplicationOfFertilizers">
+                <jdbc-field-map type="value" column="description"/>
+            </field>
+            <field name = "isKB">
+                <jdbc-field-map type="value" column="is_KB"/>
+            </field>
+            <field name = "isUD">
+                <jdbc-field-map type="value" column="is_UD"/>
+            </field>
+            <field name="costOfApplicationOfFertilizers">
+                <jdbc-field-map type="one-many" table="COST_OF_APPLICATION_OF_FERTILIZERS" ref-column.ID_OPERATION="ID_OPERATION"/>
+            </field>
+            <field name="applicationOfFertilizers_2_LevelOfIntensification">
+                <jdbc-field-map type="one-many" table="application_Of_Fertilizers_2_Level_Of_Intensification" ref-column.ID_OPERATION="ID_OPERATION"/>
+            </field>
+            <field name="standartTechnology">
+                <jdbc-field-map type="one-many" table="standard_technologies" ref-column.ID_OPERATION="id_application_of_fertilizers"/>
+            </field>
+            <field name="applicationOfFertilizers_2_TypeOfSoil_2_LevelOfIntensification_2_Crop">
+                <jdbc-field-map type="one-many" table="Application_of_fertilizers_2_soil_type_2_level_intan_2_crop" ref-column.id_operation="id_app_fert"/>
+            </field>
+            <field name="applicationOfFertilizers_2_Microelement">
+                <jdbc-field-map type="one-many" table="application_of_fertilizers_2_microelement" ref-column.id_operation="id_operation"/>
+            </field>
+            <field name="resultsFertilizers">
+                <jdbc-field-map type="one-many" table="results_fertilizers" ref-column.id_operation="id_syst_fert"/>
+            </field>
+        </class>
+
+        <class name="ApplicationOfFertilizers_2_Agriculture">
+            <jdbc-class-map type="base" table="application_of_fertilizers_2_agriculture"/>
+            <field name="applicationOfFertilizers_2_AgricultureId">
+                <jdbc-field-map type="value" column="Id"/>
+            </field>
+            <field name="applicationOfFertilizers">
+                <jdbc-field-map type="one-one" column.id_operation="id_application_fertilizer"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+        </class>
+
+        <class name="ApplicationOfFertilizers_2_LevelOfIntensification">
+            <jdbc-class-map type="base" table="Application_Of_Fertilizers_2_Level_Of_Intensification"/>
+            <field name="applicationOfFertilizers_2_LevelOfIntensificationId">
+                <jdbc-field-map type="value" column="id"/>
+            </field>
+            <field name="applicationOfFertilizers">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="ID_OPERATION"/>
+            </field>
+            <field name="levelOfIntensification">
+                <jdbc-field-map type="one-one" column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+        </class>
+
+        <class name="ApplicationOfFertilizers_2_TypeOfSoil_2_LevelOfIntensification_2_Crop">
+            <jdbc-class-map type="base" table="Application_of_fertilizers_2_soil_type_2_level_intan_2_crop"/>
+            <field name="applicationOfFertilizers_2_TypeOfSoil_2_LevelOfIntensification_2_CropId">
+                <jdbc-field-map type="value" column="id"/>
+            </field>
+            <field name="applicationOfFertilizers">
+                <jdbc-field-map type="one-one" column.id_operation="id_app_fert"/>
+            </field>
+            <field name="typeOfSoil">
+                <jdbc-field-map type="one-one" column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="levelOfIntensification">
+                <jdbc-field-map type="one-one" column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-one" column.ID_CROP="ID_CROP"/>
+            </field>
+        </class>
+
+        <class name="CareOfCrops">
+            <jdbc-class-map type="base" table="care_of_crops"/>
+            <field name="careOfCropsId">
+                <jdbc-field-map type="value" column="id_operation"/>
+            </field>
+            <field name="codeCareOfCrops">
+                <jdbc-field-map type="value" column="cod_operation"/>
+            </field>
+            <field name="descriptionCareOfCrops">
+                <jdbc-field-map type="value" column="description"/>
+            </field>
+            <field name = "isKB">
+                <jdbc-field-map type="value" column="is_KB"/>
+            </field>
+            <field name = "isUD">
+                <jdbc-field-map type="value" column="is_UD"/>
+            </field>
+            <field name="costOfCareOfCrops">
+                <jdbc-field-map type="one-many" table="cost_of_care_of_crops" ref-column.id_operation="id_operation"/>
+            </field>
+            <field name="standartTechnology">
+                <jdbc-field-map type="one-many" table="standard_technologies"
+                                ref-column.ID_OPERATION="id_care_of_crops"/>
+            </field>
+            <field name="careOfCrops_2_LevelOfIntensification_2_Crop_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="care_of_crops_2_level_of_intensification_2_crop_2_f1_2_f2"
+                                ref-column.ID_OPERATION="id_care_crop"/>
+            </field>
+        </class>
+
+        <class name="CareOfCrops_2_Agriculture">
+            <jdbc-class-map type="base" table="care_of_crops_2_agriculture"/>
+            <field name="careOfCrops_2_AgricultureId">
+                <jdbc-field-map type="value" column="Id"/>
+            </field>
+            <field name="careOfCrops">
+                <jdbc-field-map type="one-one" column.id_operation="id_care_crop"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+        </class>
+
+        <class name="CareOfCrops_2_LevelOfIntensification_2_Crop_2_F1_2_F2">
+            <jdbc-class-map type="base" table="care_of_crops_2_level_of_intensification_2_crop_2_f1_2_f2"/>
+            <field name="careOfCrops_2_LevelOfIntensification_2_Crop_2_F1_2_F2Id">
+                <jdbc-field-map type="value" column="id"/>
+            </field>
+            <field name="careOfCrops">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="id_care_crop"/>
+            </field>
+            <field name="levelOfIntensification">
+                <jdbc-field-map type="one-one" column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-one" column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="factor1">
+                <jdbc-field-map type="value" column="f1"/>
+            </field>
+            <field name="factor2">
+                <jdbc-field-map type="value" column="f2"/>
+            </field>
+        </class>
+
+        <class name="CategoryOfTypesOfSoils">
+            <jdbc-class-map type="base" table="Categories_Of_Soils"/>
+            <field name="categoryOfTypesOfSoilsId">
+                <jdbc-field-map type="value" column="id_category"/>
+            </field>
+            <field name="codCategory">
+                <jdbc-field-map type="value" column="cod_category"/>
+            </field>
+            <field name="descriptionCategoryOfSoils">
+                <jdbc-field-map type="value" column="description"/>
+            </field>
+            <field name="additionalDescriptionCategoryOfSoils">
+                <jdbc-field-map type="value" column="add_description"/>
+            </field>
+            <field name="typeOfSoil">
+                <jdbc-field-map type="one-many" table="TYPES_OF_SOILS" ref-column.ID_CATEGORY="ID_CATEGORY"/>
+            </field>
+        </class>
+
+        <class name="ChemicalProtection_2_Agriculture">
+            <jdbc-class-map type="base" table="chemical_protection_2_agriculture"/>
+            <field name="chemicalProtection_2_AgricultureId">
+                <jdbc-field-map type="value" column="Id"/>
+            </field>
+            <field name="chemicalProtectionOfCrops">
+                <jdbc-field-map type="one-one" column.id_operation="id_chemical_protection"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+        </class>
+
+        <class name="ChemicalProtectionOfCrops">
+            <jdbc-class-map type="base" table="Chemical_protection_of_crops"/>
+            <field name="chemicalProtectionOfCropsId">
+                <jdbc-field-map type="value" column="id_operation"/>
+            </field>
+            <field name="codeChemicalProtectionOfCrops">
+                <jdbc-field-map type="value" column="cod_operation"/>
+            </field>
+            <field name="descriptionChemicalProtectionOfCrops">
+                <jdbc-field-map type="value" column="description"/>
+            </field>
+            <field name = "isKB">
+                <jdbc-field-map type="value" column="is_KB"/>
+            </field>
+            <field name = "isUD">
+                <jdbc-field-map type="value" column="is_UD"/>
+            </field>
+            <field name="costOfChemicalProtectionOfCrops">
+                <jdbc-field-map type="one-many" table="cost_Of_Chemical_Protection_Of_Crops"
+                                ref-column.id_operation="id_operation"/>
+            </field>
+            <field name="costOfRawMaterialForChemicalProtection">
+                <jdbc-field-map type="one-many" table="the_price_of_raw_materials_for_chemical_crop_protection"
+                                ref-column.id_operation="id_operation"/>
+            </field>
+            <field name="standartTechnology">
+            <jdbc-field-map type="one-many" table="standard_technologies"
+                            ref-column.ID_OPERATION="id_chemical_protection"/>
+            </field>
+            <field name="chemicalProtectionOfCrops_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="chemical_prot_2_soil_type_2_level_of_inten_2_crop_2_f1f2"
+                                ref-column.id_operation="ID_chem_prot"/>
+            </field>
+        </class>
+
+        <class name="ChemicalProtectionOfCrops_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_F1_2_F2">
+            <jdbc-class-map type="base" table="chemical_prot_2_soil_type_2_level_of_inten_2_crop_2_f1f2"/>
+            <field name="chemicalProtectionOfCrops_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_F1_2_F2Id">
+                <jdbc-field-map type="value" column="id"/>
+            </field>
+            <field name="chemicalProtectionOfCrops">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="id_chem_prot"/>
+            </field>
+            <field name="typeOfSoil">
+                <jdbc-field-map type="one-one" column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="levelOfIntensification">
+                <jdbc-field-map type="one-one" column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-one" column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="factor1">
+                <jdbc-field-map type="value" column="f1"/>
+            </field>
+            <field name="factor2">
+                <jdbc-field-map type="value" column="f2"/>
+            </field>
+        </class>
+
+        <class name="CoefficientOfInflation">
+            <jdbc-class-map type="base" table="coefficients_of_inflation"/>
+            <field name="coefficientOfInflationId">
+                <jdbc-field-map type="value" column="id_coefficient"/>
+            </field>
+            <field name="value">
+                <jdbc-field-map type="value" column="value"/>
+            </field>
+            <field name="dateCreate">
+                <jdbc-field-map type="value" column="date_create"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="season">
+                <jdbc-field-map type="one-one" column.id_season="id_season"/>
+            </field>
+        </class>
+
+        <class name="CostOfApplicationOfFertilizers">
+            <jdbc-class-map type="base" table="Cost_Of_Application_Of_Fertilizers"/>
+            <field name="costOfApplicationOfFertilizersId">
+                <jdbc-field-map type="value" column="id_cost"/>
+            </field>
+            <field name="costOfApplicationOfFertilizers">
+                <jdbc-field-map type="value" column="cost"/>
+            </field>
+            <field name="applicationOfFertilizers">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="ID_OPERATION"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="date">
+                <jdbc-field-map type="value" column="date"/>
+            </field>
+        </class>
+
+        <class name="CostOfCareOfCrops">
+            <jdbc-class-map type="base" table="cost_of_care_of_crops"/>
+            <field name="costOfCareOfCropsId">
+                <jdbc-field-map type="value" column="id_cost"/>
+            </field>
+            <field name="costOfCareOfCrops">
+                <jdbc-field-map type="value" column="cost"/>
+            </field>
+            <field name="careOfCrops">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="ID_OPERATION"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="date">
+                <jdbc-field-map type="value" column="date"/>
+            </field>
+        </class>
+
+        <class name="CostOfChemicalProtectionOfCrops">
+            <jdbc-class-map type="base" table="Cost_Of_Chemical_Protection_Of_Crops"/>
+            <field name="costOfChemicalProtectionOfCropsId">
+                <jdbc-field-map type="value" column="id_cost"/>
+            </field>
+            <field name="costOfChemicalProtectionOfCrops">
+                <jdbc-field-map type="value" column="cost"/>
+            </field>
+            <field name="chemicalProtectionOfCrops">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="ID_OPERATION"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="date">
+                <jdbc-field-map type="value" column="date"/>
+            </field>
+        </class>
+
+        <class name="CostOfHarvesting">
+            <jdbc-class-map type="base" table="cost_of_harvesting"/>
+            <field name="costOfHarvestingId">
+                <jdbc-field-map type="value" column="id_cost"/>
+            </field>
+            <field name="costOfHarvesting">
+                <jdbc-field-map type="value" column="cost"/>
+            </field>
+            <field name="harvesting">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="ID_OPERATION"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="date">
+                <jdbc-field-map type="value" column="date"/>
+            </field>
+        </class>
+
+        <class name="CostOfMainProcessing">
+            <jdbc-class-map type="base" table="Cost_Of_Main_Processing"/>
+            <field name="costOfMainProcessingId">
+                <jdbc-field-map type="value" column="id_cost"/>
+            </field>
+            <field name="costOfMainProcessing">
+                <jdbc-field-map type="value" column="cost"/>
+            </field>
+            <field name="mainProcessing">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="ID_OPERATION"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="date">
+                <jdbc-field-map type="value" column="date"/>
+            </field>
+        </class>
+
+        <class name="CostOfPreseedingProcessingAndSowing">
+            <jdbc-class-map type="base" table="cost_of_preseeding_processing_and_sowing"/>
+            <field name="costOfPreseedingProcessingAndSowingId">
+                <jdbc-field-map type="value" column="id_cost"/>
+            </field>
+            <field name="costOfPreseedingProcessingAndSowing">
+                <jdbc-field-map type="value" column="cost"/>
+            </field>
+            <field name="preseedingProcessingAndSowing">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="ID_OPERATION"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="date">
+                <jdbc-field-map type="value" column="date"/>
+            </field>
+        </class>
+
+        <class name="CostOfRawMaterialForChemicalProtection">
+            <jdbc-class-map type="base" table="the_price_of_raw_materials_for_chemical_crop_protection"/>
+            <field name="costOfRawMaterialForChemicalProtectionId">
+                <jdbc-field-map type="value" column="id_material"/>
+            </field>
+            <field name="costOfRawMaterialForChemicalProtection">
+                <jdbc-field-map type="value" column="cost"/>
+            </field>
+            <field name="chemicalProtectionOfCrops">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="ID_OPERATION"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="date">
+                <jdbc-field-map type="value" column="date"/>
+            </field>
+        </class>
+
+        <class name="CostOfSeed">
+            <jdbc-class-map type="base" table="cost_of_seeds"/>
+            <field name="costOfSeedId">
+                <jdbc-field-map type="value" column="id_cost_seed"/>
+            </field>
+            <field name="gradeOfCrop">
+                <jdbc-field-map type="one-one" column.ID_GRADE_CROP="ID_GRADE_CROP"/>
+            </field>
+            <field name="costOfSeed">
+                <jdbc-field-map type="value" column="cost"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="date">
+                <jdbc-field-map type="value" column="date"/>
+            </field>
+        </class>
+
+        <class name="CostOnProductionFertilizer">
+            <jdbc-class-map type="base" table="cost_production_fertilizers"/>
+            <field name="costOnProductionFertilizerId">
+                <jdbc-field-map type="value" column="id_cost_production_fertilizer"/>
+            </field>
+            <field name="gradeOfCrop">
+                <jdbc-field-map type="one-one" column.ID_GRADE_CROP="ID_GRADE_CROP"/>
+            </field>
+            <field name="costOfProductionAtIntensiveLevel">
+                <jdbc-field-map type="value" column="cost_production_inten"/>
+            </field>
+            <field name="costOfProductionAtExtensiveLevel">
+                <jdbc-field-map type="value" column="cost_production_exten"/>
+            </field>
+            <field name="costOfProductionAtNormalLevel">
+                <jdbc-field-map type="value" column="cost_production_norm"/>
+            </field>
+            <field name="costOfFertilizerAtIntensiveLevel">
+                <jdbc-field-map type="value" column="cost_fertilizer_inten"/>
+            </field>
+            <field name="costOfFertilizerAtNormalLevel">
+                <jdbc-field-map type="value" column="cost_fertilizer_norm"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="date">
+                <jdbc-field-map type="value" column="date"/>
+            </field>
+        </class>
+
+        <class name="Crop">
+            <jdbc-class-map type="base" table="Crops"/>
+            <field name="cropId">
+                <jdbc-field-map type="value" column="id_crop"/>
+            </field>
+            <field name="codeCrop">
+                <jdbc-field-map type="value" column="cod_crop"/>
+            </field>
+            <field name="nameCrop">
+                <jdbc-field-map type="value" column="name"/>
+            </field>
+            <field name="groupOfCrops">
+                <jdbc-field-map type="one-one" column.ID_GROUP_CROP="ID_GROUP_CROP"/>
+            </field>
+            <field name="predecessor">
+                <jdbc-field-map type="one-one" column.id_predecessor="id_predecessor"/>
+            </field>
+            <field name="color">
+                <jdbc-field-map type="value" column="color"/>
+            </field>
+            <field name="pattern">
+                <jdbc-field-map type="value" column="pattern"/>
+            </field>
+            <field name = "isKB">
+                <jdbc-field-map type="value" column="is_KB"/>
+            </field>
+            <field name = "isUD">
+                <jdbc-field-map type="value" column="is_UD"/>
+            </field>
+            <field name="applicationOfFertilizers_2_TypeOfSoil_2_LevelOfIntensification_2_Crop">
+                <jdbc-field-map type="one-many" table="Application_of_fertilizers_2_soil_type_2_level_intan_2_crop"
+                                ref-column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="chemicalProtectionOfCrops_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="chemical_prot_2_soil_type_2_level_of_inten_2_crop_2_f1f2"
+                                ref-column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="mainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="main_proces_2_soil_type_2_lev_of_inten_2_crop_2_pred_2_f1f2"
+                                ref-column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="preseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="pres_pr_2_soil_type_2_l_inten_2_crop_2_pred_2_mainp_2_f1f2"
+                                ref-column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="careOfCrops_2_LevelOfIntensification_2_Crop_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="care_of_crops_2_level_of_intensification_2_crop_2_f1_2_f2"
+                                ref-column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="harvesting_2_LevelOfIntensification_2_Crop_2_Factor">
+                <jdbc-field-map type="one-many" table="harvesting_2_level_of_intansification_2_crop_2_factor"
+                                ref-column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="gradeOfCrop">
+                <jdbc-field-map type="one-many" table="grades_of_crops" ref-column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="levelOfIntensificationToCropsToPredecessor">
+                <jdbc-field-map type="one-many" table="level_of_intensification_2_crops_2_predecessors"
+                                ref-column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="productivity">
+                <jdbc-field-map type="one-many" table="Productivity" ref-column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="productivityCalculation">
+                <jdbc-field-map type="one-many" table="productivity_calculation" ref-column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="removalOfMicroelement">
+                 <jdbc-field-map type="one-many" table="removal_of_microelements" ref-column.id_crop="id_crop"/>
+            </field>
+            <field name="groupOfCropsForCoeff">
+                <jdbc-field-map type="one-one" column.id_groups_of_crops_for_coeff="id_group_crop_for_coeff"/>
+            </field>
+            <field name="resultsFertilizers">
+                <jdbc-field-map type="one-many" table="results_fertilizers" ref-column.id_crop="id_crop"/>
+            </field>
+        </class>
+
+        <class name="Crop_2_Agriculture">
+            <jdbc-class-map type="base" table="crop_2_agriculture"/>
+            <field name="crop_2_AgricultureId">
+                <jdbc-field-map type="value" column="Id"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-one" column.ID_CROP="id_crop"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="color">
+                <jdbc-field-map type="value" column="color"/>
+            </field>
+            <field name="pattern">
+                <jdbc-field-map type="value" column="pattern"/>
+            </field>
+        </class>
+
+        <class name="Crop_2_AgricultureField_2_Year">
+            <jdbc-class-map type="base" table="crop_2_agriculture_field_2_year"/>
+            <field name="crop_2_AgricultureField_2_YearId">
+                <jdbc-field-map type="value" column="Id"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-one" column.ID_CROP="id_crop"/>
+            </field>
+            <field name="agricultureField">
+                <jdbc-field-map type="one-one" column.id_field="id_field"/>
+            </field>
+            <field name="year">
+                <jdbc-field-map type="value" column="year"/>
+            </field>
+        </class>
+
+        <class name="CropRotation">
+            <jdbc-class-map type="base" table="crop_rotations"/>
+            <field name="cropRotationId">
+                <jdbc-field-map type="value" column="id_CROP_ROTATION"/>
+            </field>
+            <field name="codeCropRotation">
+                <jdbc-field-map type="value" column="COD_CROP_ROTATION"/>
+            </field>
+            <field name="nameCropRotation">
+                <jdbc-field-map type="value" column="NAME"/>
+            </field>
+            <field name="viewOfCropRotation">
+                <jdbc-field-map type="one-one" column.ID_VIEW="ID_VIEW"/>
+            </field>
+            <field name="lengthOfTheCycleCropRotation">
+                <jdbc-field-map type="value" column="LENGTH"/>
+            </field>
+            <field name="descriptionCropRotation">
+                <jdbc-field-map type="value" column="description"/>
+            </field>
+            <field name="adapterSemihydromorphic">
+                <jdbc-field-map type="value" column="adapterSemihydromorphic"/>
+            </field>
+            <field name="adapterIntensification">
+                <jdbc-field-map type="value" column="adapterIntensification"/>
+            </field>
+            <field name="factorInTheRiskOfErosion">
+                <jdbc-field-map type="value" column="factorInTheRiskOfErosion"/>
+            </field>
+            <field name="cropRotation_2_GroupOfCrops_2_LevelOfIntensification_2_TypeOfSoil">
+                <jdbc-field-map type="one-many" table="crop_rotations_2_group_of_crops_2_level_of_inten_2_soil_type"
+                                ref-column.ID_CROP_ROTATION="ID_CROP_ROTATION"/>
+            </field>
+            <field name="cropRotationOfAgriculture">
+                <jdbc-field-map type="one-many" table="crop_rotations_of_agriculture"
+                                ref-column.ID_CROP_ROTATION="ID_CROP_ROTATION"/>
+            </field>
+            <field name="cropRotationToGroupOfCropsToYear">
+                <jdbc-field-map type="one-many" table="crop_rotation_2_group_of_crops_2_year"
+                                ref-column.ID_CROP_ROTATION="ID_CROP_ROTATION"/>
+            </field>
+        </class>
+
+        <class name="CropRotation_2_GroupOfCrops_2_LevelOfIntensification_2_TypeOfSoil">
+            <jdbc-class-map type="base" table="crop_rotations_2_group_of_crops_2_level_of_inten_2_soil_type"/>
+            <field name="cropRotation_2_GroupOfCrops_2_LevelOfIntensification_2_TypeOfSoilId">
+                <jdbc-field-map type="value" column="id"/>
+            </field>
+            <field name="cropRotation">
+                <jdbc-field-map type="one-one" column.ID_CROP_ROTATION="ID_CROP_ROTATION"/>
+            </field>
+            <field name="groupOfCrops">
+                <jdbc-field-map type="one-one" column.ID_GROUP_CROP="ID_GROUP_CROP"/>
+            </field>
+            <field name="levelOfIntensification">
+                <jdbc-field-map type="one-one" column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="typeOfSoil">
+                <jdbc-field-map type="one-one" column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+        </class>
+
+        <class name="CropRotationOfAgriculture">
+            <jdbc-class-map type="base" table="crop_rotations_of_agriculture"/>
+            <field name="cropRotationOfAgricultureId">
+                <jdbc-field-map type="value" column="id_crop_rotation_agriculture"/>
+            </field>
+            <field name="codeCropRotationOfAgriculture">
+                <jdbc-field-map type="value" column="cod_crop_rotation"/>
+            </field>
+            <field name="cropRotation">
+                <jdbc-field-map type="one-one" column.ID_CROP_ROTATION="ID_CROP_ROTATION"/>
+            </field>
+            <field name="startYearCropRotationOfAgriculture">
+                <jdbc-field-map type="value" column="YEAR_START"/>
+            </field>
+            <field name="cropRotationOfAgriculture_2_AgricultureField">
+                <jdbc-field-map type="one-many" table="crop_rotation_of_agriculture_2_field_agriculture" ref-column.id_crop_rotation_agriculture="id_crop_rotation_agriculture"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+        </class>
+
+        <class name="CropRotationOfAgriculture_2_AgricultureField">
+            <jdbc-class-map type="base" table="crop_rotation_of_agriculture_2_field_agriculture"/>
+            <field name="cropRotationOfAgriculture_2_AgricultureFieldId">
+                <jdbc-field-map type="value" column="id"/>
+            </field>
+            <field name="cropRotationOfAgriculture">
+                <jdbc-field-map type="one-one" column.ID_CROP_ROTATION_AGRICULTURE="ID_CROP_ROTATION_AGRICULTURE"/>
+            </field>
+            <field name="agricultureField">
+                <jdbc-field-map type="one-one" column.ID_FIELD="ID_FIELD"/>
+            </field>
+        </class>
+
+        <class name="CropRotationToGradeOfCropsToYear">
+            <jdbc-class-map type="base" table="crop_rotation_agriculture_2_grade_of_crops_2_year"/>
+            <field name="cropRotationToGradeOfCropsToYearId">
+                <jdbc-field-map type="value" column="Id"/>
+            </field>
+            <field name="cropRotation">
+                <jdbc-field-map type="one-one" column.ID_CROP_ROTATION_AGRICULTURE="id_crop_rotation_of_agriculture"/>
+            </field>
+            <field name="gradeOfCrop">
+                <jdbc-field-map type="one-one" column.ID_GRADE_CROP="id_grade_crop"/>
+            </field>
+            <field name="number">
+                <jdbc-field-map type="value" column="number"/>
+            </field>
+        </class>
+
+        <class name="CropRotationToGroupOfCropsToYear">
+            <jdbc-class-map type="base" table="crop_rotation_2_group_of_crops_2_year"/>
+            <field name="cropRotationToGroupOfCropsToYearId">
+                <jdbc-field-map type="value" column="Id"/>
+            </field>
+            <field name="cropRotation">
+                <jdbc-field-map type="one-one" column.ID_CROP_ROTATION="ID_CROP_ROTATION"/>
+            </field>
+            <field name="groupOfCrops">
+                <jdbc-field-map type="one-one" column.ID_GROUP_CROP="ID_GROUP_CROP"/>
+            </field>
+            <field name="number">
+                <jdbc-field-map type="value" column="number"/>
+            </field>
+        </class>
+
+        <class name="GradeOfCrop">
+            <jdbc-class-map type="base" table="grades_of_crops"/>
+            <field name="gradeOfCropId">
+                <jdbc-field-map type="value" column="id_grade_crop"/>
+            </field>
+            <field name="codeGradeOfCrop">
+                <jdbc-field-map type="value" column="cod_grade"/>
+            </field>
+            <field name="nameGradeOfCrops">
+                <jdbc-field-map type="value" column="name"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-one" column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="factorToProductivityGradeOfCrop">
+                <jdbc-field-map type="value" column="factor_to_productivity"/>
+            </field>
+            <field name = "isKB">
+                <jdbc-field-map type="value" column="is_KB"/>
+            </field>
+            <field name = "isUD">
+                <jdbc-field-map type="value" column="is_UD"/>
+            </field>
+            <field name="costOfSeed">
+                <jdbc-field-map type="one-many" table="cost_of_seeds" ref-column.ID_GRADE_CROP="ID_GRADE_CROP"/>
+            </field>
+            <field name="costOnProductionFertilizer">
+                <jdbc-field-map type="one-many" table="cost_production_fertilizers"
+                                ref-column.ID_GRADE_CROP="ID_GRADE_CROP"/>
+            </field>
+            <field name="gradeOfCrop_2_LevelOfIntensification_2_TypeOfSoil">
+                <jdbc-field-map type="one-many" table="grade_of_crop_2_level_of_intensification_2_type_of_soil"
+                                ref-column.ID_GRADE_CROP="ID_GRADE_CROP"/>
+            </field>
+            <field name="standartTechnology">
+                <jdbc-field-map type="one-many" table="standard_technologies"
+                                ref-column.ID_GRADE_CROP="ID_GRADE"/>
+            </field>
+        </class>
+
+        <class name="GradeOfCrop_2_Agriculture">
+            <jdbc-class-map type="base" table="grade_of_crop_2_agriculture"/>
+            <field name="gradeOfCrop_2_AgricultureId">
+                <jdbc-field-map type="value" column="Id"/>
+            </field>
+            <field name="gradeOfCrop">
+                <jdbc-field-map type="one-one" column.ID_GRADE_CROP="id_grade_crop"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+        </class>
+
+        <class name="GradeOfCrop_2_LevelOfIntensification_2_TypeOfSoil">
+            <jdbc-class-map type="base" table="grade_of_crop_2_level_of_intensification_2_type_of_soil"/>
+            <field name="gradeOfCrop_2_LevelOfIntensification_2_TypeOfSoilId">
+                <jdbc-field-map type="value" column="id"/>
+            </field>
+            <field name="gradeOfCrop">
+                <jdbc-field-map type="one-one" column.ID_GRADE_CROP="ID_GRADE_CROP"/>
+            </field>
+            <field name="levelOfIntensification">
+                <jdbc-field-map type="one-one" column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="typeOfSoil">
+                <jdbc-field-map type="one-one" column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+        </class>
+
+        <class name="GroupOfCrops">
+            <jdbc-class-map type="base" table="Groups_Of_Crops"/>
+            <field name="groupOfCropsId">
+                <jdbc-field-map type="value" column="id_group_crop"/>
+            </field>
+            <field name="codeGroupOfCrops">
+                <jdbc-field-map type="value" column="cod_group"/>
+            </field>
+            <field name="nameGroupOfCrops">
+                <jdbc-field-map type="value" column="name"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-many" table="CROPS" ref-column.ID_GROUP_CROP="ID_GROUP_CROP"/>
+            </field>
+            <field name = "isKB">
+                <jdbc-field-map type="value" column="is_KB"/>
+            </field>
+            <field name = "isUD">
+                <jdbc-field-map type="value" column="is_UD"/>
+            </field>
+            <field name="cropRotation_2_GroupOfCrops_2_LevelOfIntensification_2_TypeOfSoil">
+                <jdbc-field-map type="one-many" table="crop_rotations_2_group_of_crops_2_level_of_inten_2_soil_type"
+                                ref-column.ID_GROUP_CROP="ID_GROUP_CROP"/>
+            </field>
+            <field name="cropRotationToGroupOfCropsToYear">
+                <jdbc-field-map type="one-many" table="crop_rotation_2_group_of_crops_2_year"
+                                ref-column.ID_GROUP_CROP="ID_GROUP_CROP"/>
+            </field>
+        </class>
+
+        <class name="GroupOfCrops_2_Agriculture">
+            <jdbc-class-map type="base" table="group_of_crops_2_agriculture"/>
+            <field name="groupOfCrops_2_AgricultureId">
+                <jdbc-field-map type="value" column="Id"/>
+            </field>
+            <field name="groupOfCrops">
+                <jdbc-field-map type="one-one" column.ID_GROUP_CROP="id_group_crop"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+        </class>
+
+        <class name="GroupOfTypesOfSoils">
+            <jdbc-class-map type="base" table="Groups_Of_Types_Of_Soils"/>
+            <field name="groupOfTypesOfSoilsId">
+                <jdbc-field-map type="value" column="id_group_soil"/>
+            </field>
+            <field name="nameGroupOfTypesOfSoils">
+                <jdbc-field-map type="value" column="name_group_soil"/>
+            </field>
+            <field name="typeOfSoil">
+                <jdbc-field-map type="one-many" table="TYPES_OF_SOILS" ref-column.ID_GROUP_SOIL="ID_GROUP_SOIL"/>
+            </field>
+        </class>
+
+        <class name="Harvesting">
+            <jdbc-class-map type="base" table="harvesting"/>
+            <field name="harvestingId">
+                <jdbc-field-map type="value" column="id_operation"/>
+            </field>
+            <field name="codeHarvesting">
+                <jdbc-field-map type="value" column="cod_operation"/>
+            </field>
+            <field name="descriptionHarvesting">
+                <jdbc-field-map type="value" column="description"/>
+            </field>
+            <field name = "isKB">
+                <jdbc-field-map type="value" column="is_KB"/>
+            </field>
+            <field name = "isUD">
+                <jdbc-field-map type="value" column="is_UD"/>
+            </field>
+            <field name="costOfHarvesting">
+                <jdbc-field-map type="one-many" table="cost_of_harvesting" ref-column.id_operation="id_operation"/>
+            </field>
+            <field name="standartTechnology">
+                <jdbc-field-map type="one-many" table="standard_technologies"
+                                ref-column.ID_OPERATION="id_harvesting"/>
+            </field>
+            <field name="harvesting_2_LevelOfIntensification_2_Crop_2_Factor">
+                <jdbc-field-map type="one-many" table="harvesting_2_level_of_intansification_2_crop_2_factor"
+                                ref-column.ID_OPERATION="id_harvesting"/>
+            </field>
+        </class>
+
+        <class name="Harvesting_2_Agriculture">
+            <jdbc-class-map type="base" table="harvesting_2_agriculture"/>
+            <field name="harvesting_2_AgricultureId">
+                <jdbc-field-map type="value" column="Id"/>
+            </field>
+            <field name="harvesting">
+                <jdbc-field-map type="one-one" column.id_operation="id_harvesting"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+        </class>
+
+        <class name="Harvesting_2_LevelOfIntensification_2_Crop_2_Factor">
+            <jdbc-class-map type="base" table="harvesting_2_level_of_intansification_2_crop_2_factor"/>
+            <field name="harvesting_2_LevelOfIntensification_2_Crop_2_FactorId">
+                <jdbc-field-map type="value" column="id"/>
+            </field>
+            <field name="harvesting">
+                <jdbc-field-map type="one-one" column.id_operation="id_harvesting"/>
+            </field>
+            <field name="levelOfIntensification">
+                <jdbc-field-map type="one-one" column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-one" column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="factor">
+                <jdbc-field-map type="value" column="f1"/>
+            </field>
+        </class>
+
+        <class name="LandBase">
+            <jdbc-class-map type="base" table="land_base"/>
+            <field name="landBaseId">
+                <jdbc-field-map type="value" column="id_land_base"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="date">
+                <jdbc-field-map type="value" column="date"/>
+            </field>
+            <field name="landBase_2_agricultureField">
+                <jdbc-field-map type="one-many" table="land_base_2_agriculture_field"
+                            ref-column.id_land_base="id_land_base"/>
+            </field>
+            <field name="solutionsMode2">
+                <jdbc-field-map type="one-many" table="solutions_mode2"
+                                ref-column.id_land_base="id_land_base"/>
+            </field>
+            <field name="resultsMode1">
+                <jdbc-field-map type="one-many" table="results_mode1"
+                                ref-column.id_land_base="id_land_base"/>
+            </field>
+            <field name="agrochemicalSoilSurveys">
+                <jdbc-field-map type="one-many" table="agrochemical_soil_survey"
+                                ref-column.id_land_base="id_land_base"/>
+            </field>
+            <field name="solutions">
+                <jdbc-field-map type="one-many" table="optimal_land_solution"
+                                ref-column.id_land_base="id_land_base"/>
+            </field>
+        </class>
+
+        <class name="LandBase_2_AgricultureField">
+            <jdbc-class-map type="base" table="land_base_2_agriculture_field"/>
+            <field name="landBase_2_AgricultureFieldId">
+                <jdbc-field-map type="value" column="ID"/>
+            </field>
+            <field name="landBase">
+                <jdbc-field-map type="one-one" column.id_land_base="id_land_base"/>
+            </field>
+            <field name="agricultureField">
+                <jdbc-field-map type="one-one" column.id_field="id_field"/>
+            </field>
+        </class>
+
+        <class name="LevelOfIntensification">
+            <jdbc-class-map type="base" table="Levels_Of_Intensification"/>
+            <field name="levelOfIntensificationId">
+                <jdbc-field-map type="value" column="id_level"/>
+            </field>
+            <field name="codeLevelOfIntensification">
+                <jdbc-field-map type="value" column="cod_level"/>
+            </field>
+            <field name="nameLevelOfIntensification">
+                <jdbc-field-map type="value" column="name"/>
+            </field>
+            <field name="descriptionLevelOfIntensification">
+                <jdbc-field-map type="value" column="description"/>
+            </field>
+            <field name="applicationOfFertilizers_2_LevelOfIntensification">
+                <jdbc-field-map type="one-many" table="application_Of_Fertilizers_2_Level_Of_Intensification"
+                                ref-column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="applicationOfFertilizers_2_TypeOfSoil_2_LevelOfIntensification_2_Crop">
+                <jdbc-field-map type="one-many" table="Application_of_fertilizers_2_soil_type_2_level_intan_2_crop"
+                                ref-column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+
+            <field name="chemicalProtectionOfCrops_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="chemical_prot_2_soil_type_2_level_of_inten_2_crop_2_f1f2"
+                                ref-column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="mainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="main_proces_2_soil_type_2_lev_of_inten_2_crop_2_pred_2_f1f2"
+                                ref-column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="preseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="pres_pr_2_soil_type_2_l_inten_2_crop_2_pred_2_mainp_2_f1f2"
+                                ref-column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="careOfCrops_2_LevelOfIntensification_2_Crop_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="care_of_crops_2_level_of_intensification_2_crop_2_f1_2_f2"
+                                ref-column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="harvesting_2_LevelOfIntensification_2_Crop_2_Factor">
+                <jdbc-field-map type="one-many" table="harvesting_2_level_of_intansification_2_crop_2_factor"
+                                ref-column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="cropRotation_2_GroupOfCrops_2_LevelOfIntensification_2_TypeOfSoil">
+                <jdbc-field-map type="one-many" table="crop_rotations_2_group_of_crops_2_level_of_inten_2_soil_type"
+                                ref-column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="gradeOfCrop_2_LevelOfIntensification_2_TypeOfSoil">
+                <jdbc-field-map type="one-many" table="grade_of_crop_2_level_of_intensification_2_type_of_soil"
+                                ref-column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="levelOfIntensificationAndRecommendations">
+                <jdbc-field-map type="one-many" table="levels_of_intensification_recommendations"
+                                ref-column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="typeOfSoil_2_LevelOfIntensification">
+                <jdbc-field-map type="one-many" table="type_of_soil_2_level_of_intensification"
+                                ref-column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="standartTechnology">
+                <jdbc-field-map type="one-many" table="standard_technologies" ref-column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="productivity">
+                <jdbc-field-map type="one-many" table="Productivity" ref-column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="productivityCalculation">
+                <jdbc-field-map type="one-many" table="productivity_calculation" ref-column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+        </class>
+
+        <class name="LevelOfIntensificationAndRecommendations">
+            <jdbc-class-map type="base" table="levels_of_intensification_recommendations"/>
+            <field name="levelOfIntensificationAndRecommendationsId">
+                <jdbc-field-map type="value" column="id_recom"/>
+            </field>
+            <field name="levelOfIntensification">
+                <jdbc-field-map type="one-one" column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="restrictionsOnTypeOfSoilForLevelOfIntensification">
+                <jdbc-field-map type="value" column="restrictions"/>
+            </field>
+        </class>
+
+        <class name="LevelOfIntensificationToCropsToPredecessors">
+            <jdbc-class-map type="base" table="level_of_intensification_2_crops_2_predecessors"/>
+            <field name="levelOfIntensificationToCropsToPredecessorsId">
+                <jdbc-field-map type="value" column="id"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-one" column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="predecessor">
+                <jdbc-field-map type="one-one" column.ID_PREDECESSOR="ID_PREDECESSOR"/>
+            </field>
+            <field name="levelOfIntensification">
+                <jdbc-field-map type="one-one" column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="factor">
+                <jdbc-field-map type="value" column="factor"/>
+            </field>
+        </class>
+
+        <class name="MainProcessing">
+            <jdbc-class-map type="base" table="Main_Processing"/>
+            <field name="mainProcessingId">
+                <jdbc-field-map type="value" column="id_operation"/>
+            </field>
+            <field name="codeMainProcessing">
+                <jdbc-field-map type="value" column="cod_operation"/>
+            </field>
+            <field name="descriptionMainProcessing">
+                <jdbc-field-map type="value" column="description"/>
+            </field>
+            <field name = "isKB">
+                <jdbc-field-map type="value" column="is_KB"/>
+            </field>
+            <field name = "isUD">
+                <jdbc-field-map type="value" column="is_UD"/>
+            </field>
+            <field name="costOfMainProcessing">
+                <jdbc-field-map type="one-many" table="cost_Of_Main_Processing" ref-column.id_operation="id_operation"/>
+            </field>
+            <field name="preseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="pres_pr_2_soil_type_2_l_inten_2_crop_2_pred_2_mainp_2_f1f2"
+                                ref-column.ID_OPERATION="ID_MAIN_PROC"/>
+            </field>
+
+            <field name="standartTechnology">
+                <jdbc-field-map type="one-many" table="standard_technologies"
+                                ref-column.ID_OPERATION="ID_MAIN_PROCESSING"/>
+            </field>
+            <field name="mainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="main_proces_2_soil_type_2_lev_of_inten_2_crop_2_pred_2_f1f2"
+                                ref-column.ID_OPERATION="ID_MAIN_PROC"/>
+            </field>
+        </class>
+
+        <class name="MainProcessing_2_Agriculture">
+            <jdbc-class-map type="base" table="main_processing_2_agriculture"/>
+            <field name="mainProcessing_2_AgricultureId">
+                <jdbc-field-map type="value" column="Id"/>
+            </field>
+            <field name="mainProcessing">
+                <jdbc-field-map type="one-one" column.id_operation="id_main_processing"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+        </class>
+
+        <class name="MainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2">
+            <jdbc-class-map type="base" table="main_proces_2_soil_type_2_lev_of_inten_2_crop_2_pred_2_f1f2"/>
+            <field name="mainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2Id">
+                <jdbc-field-map type="value" column="id"/>
+            </field>
+            <field name="mainProcessing">
+                <jdbc-field-map type="one-one" column.id_operation="id_main_proc"/>
+            </field>
+            <field name="typeOfSoil">
+                <jdbc-field-map type="one-one" column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="levelOfIntensification">
+                <jdbc-field-map type="one-one" column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-one" column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="predecessor">
+                <jdbc-field-map type="one-one" column.ID_PREDECESSOR="ID_PREDECESSOR"/>
+            </field>
+            <field name="factor1">
+                <jdbc-field-map type="value" column="f1"/>
+            </field>
+            <field name="factor2">
+                <jdbc-field-map type="value" column="f2"/>
+            </field>
+        </class>
+
+        <class name="Point">
+            <jdbc-class-map type="base" table="POINT"/>
+            <field name="pointId">
+                <jdbc-field-map type="value" column="id_point"/>
+            </field>
+            <field name="number">
+                <jdbc-field-map type="value" column="number"/>
+            </field>
+            <field name="field">
+                <jdbc-field-map type="one-one" column.ID_FIELD="ID_FIELD"/>
+            </field>
+            <field name="latitude">
+                <jdbc-field-map type="value" column="latitude"/>
+            </field>
+            <field name="longitude">
+                <jdbc-field-map type="value" column="longitude"/>
+            </field>
+            <field name="point_2_Microelement_2_Method">
+                <jdbc-field-map type="one-many" table="point_2_microelement_2_method"
+                                ref-column.id_point="id_point"/>
+            </field>
+        </class>
+
+        <class name="Predecessor">
+            <jdbc-class-map type="base" table="Predecessors"/>
+            <field name="predecessorId">
+                <jdbc-field-map type="value" column="id_predecessor"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-one" column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="mainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="main_proces_2_soil_type_2_lev_of_inten_2_crop_2_pred_2_f1f2"
+                                ref-column.ID_PREDECESSOR="ID_PREDECESSOR"/>
+            </field>
+            <field name="preseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="pres_pr_2_soil_type_2_l_inten_2_crop_2_pred_2_mainp_2_f1f2"
+                                ref-column.ID_PREDECESSOR="ID_PREDECESSOR"/>
+            </field>
+            <field name="resultsFertilizers">
+                <jdbc-field-map type="one-many" table="results_fertilizers" ref-column.id_predecessor="id_pred"/>
+            </field>
+        </class>
+
+        <class name="PreseedingProcessing_2_Agriculture">
+            <jdbc-class-map type="base" table="preseeding_processing_2_agriculture"/>
+            <field name="preseedingProcessing_2_AgricultureId">
+                <jdbc-field-map type="value" column="Id"/>
+            </field>
+            <field name="preseedingProcessingAndSowing">
+                <jdbc-field-map type="one-one" column.id_operation="id_preseeding_processing"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+        </class>
+
+        <class name="PreseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2">
+            <jdbc-class-map type="base" table="pres_pr_2_soil_type_2_l_inten_2_crop_2_pred_2_mainp_2_f1f2"/>
+            <field name="preseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2Id">
+                <jdbc-field-map type="value" column="id"/>
+            </field>
+            <field name="preseedingProcessingAndSowing">
+                <jdbc-field-map type="one-one" column.id_operation="id_pres_pr"/>
+            </field>
+            <field name="typeOfSoil">
+                <jdbc-field-map type="one-one" column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="levelOfIntensification">
+                <jdbc-field-map type="one-one" column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-one" column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="predecessor">
+                <jdbc-field-map type="one-one" column.ID_PREDECESSOR="ID_PREDECESSOR"/>
+            </field>
+            <field name="mainProcessing">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="ID_MAIN_PROC"/>
+            </field>
+            <field name="factor1">
+                <jdbc-field-map type="value" column="f1"/>
+            </field>
+            <field name="factor2">
+                <jdbc-field-map type="value" column="f2"/>
+            </field>
+        </class>
+
+        <class name="PreseedingProcessingAndSowing">
+            <jdbc-class-map type="base" table="preseeding_processing_and_sowing"/>
+            <field name="preseedingProcessingAndSowingId">
+                <jdbc-field-map type="value" column="id_operation"/>
+            </field>
+            <field name="codePreseedingProcessingAndSowing">
+                <jdbc-field-map type="value" column="cod_operation"/>
+            </field>
+            <field name="descriptionPreseedingProcessingAndSowing">
+                <jdbc-field-map type="value" column="description"/>
+            </field>
+            <field name = "isKB">
+                <jdbc-field-map type="value" column="is_KB"/>
+            </field>
+            <field name = "isUD">
+                <jdbc-field-map type="value" column="is_UD"/>
+            </field>
+            <field name="costOfPreseedingProcessingAndSowing">
+                <jdbc-field-map type="one-many" table="cost_of_preseeding_processing_and_sowing"
+                                ref-column.id_operation="id_operation"/>
+            </field>
+            <field name="standartTechnology">
+                <jdbc-field-map type="one-many" table="standard_technologies"
+                                ref-column.ID_OPERATION="id_preseeding_processing"/>
+            </field>
+            <field name="preseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="pres_pr_2_soil_type_2_l_inten_2_crop_2_pred_2_mainp_2_f1f2"
+                                ref-column.ID_OPERATION="id_pres_pr"/>
+            </field>
+        </class>
+
+        <class name="Productivity">
+            <jdbc-class-map type="base" table="productivity"/>
+            <field name="productivityId">
+                <jdbc-field-map type="value" column="id_productivity"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-one" column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="levelOfIntensification">
+                <jdbc-field-map type="one-one" column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="typeOfSoil">
+                <jdbc-field-map type="one-one" column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="productivity">
+                <jdbc-field-map type="value" column="productivity"/>
+            </field>
+        </class>
+
+        <class name="ProductivityCalculation">
+            <jdbc-class-map type="base" table="productivity_calculation"/>
+            <field name="productivityCalculationId">
+                <jdbc-field-map type="value" column="id_productivity"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-one" column.ID_CROP="ID_CROP"/>
+            </field>
+            <field name="levelOfIntensification">
+                <jdbc-field-map type="one-one" column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+            <field name="typeOfSoil">
+                <jdbc-field-map type="one-one" column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="productivity">
+                <jdbc-field-map type="value" column="productivity"/>
+            </field>
+        </class>
+
+        <class name="ResultCropRotationMode2">
+            <jdbc-class-map type="base" table="results_crop_rotation_mode2"/>
+            <field name="resultCropRotationMode2Id">
+                <jdbc-field-map type="value" column="id_result_crop_rotation"/>
+            </field>
+            <field name="name">
+                <jdbc-field-map type="value" column="name"/>
+            </field>
+            <field name="status">
+                <jdbc-field-map type="value" column="status"/>
+            </field>
+            <field name="area">
+                <jdbc-field-map type="value" column="area"/>
+            </field>
+            <field name="solution">
+                <jdbc-field-map type="one-one" column.id_solution="id_solution"/>
+            </field>
+            <field name="cropRotationOfAgriculture">
+                <jdbc-field-map type="one-one" column.id_crop_rotation_agriculture="id_crop_rotation_agriculture"/>
+            </field>
+            <field name="prod">
+                <jdbc-field-map type="value" column="prod"/>
+            </field>
+            <field name="income">
+                <jdbc-field-map type="value" column="income"/>
+            </field>
+            <field name="costs">
+                <jdbc-field-map type="value" column="costs"/>
+            </field>
+            <field name="prodSt">
+                <jdbc-field-map type="value" column="prodSt"/>
+            </field>
+            <field name="incomeSt">
+                <jdbc-field-map type="value" column="incomeSt"/>
+            </field>
+            <field name="costsSt">
+                <jdbc-field-map type="value" column="costsSt"/>
+            </field>
+            <field name="resultsMode2">
+                <jdbc-field-map type="one-many" table="results_mode2"
+                                ref-column.id_result_crop_rotation="id_result_crop_rotation"/>
+            </field>
+            <field name="fieldsAll">
+                <jdbc-field-map type="value" column="fieldsAll"/>
+            </field>
+            <field name="fieldsProc">
+                <jdbc-field-map type="value" column="fieldsProc"/>
+            </field>
+            <field name="fieldsUnproc">
+                <jdbc-field-map type="value" column="fieldsUnproc"/>
+            </field>
+        </class>
+
+        <class name="ResultMode1">
+            <jdbc-class-map type="base" table="results_mode1"/>
+            <field name="resultMode1Id">
+                <jdbc-field-map type="value" column="Id"/>
+            </field>
+            <field name="nameResult">
+                <jdbc-field-map type="value" column="name_result"/>
+            </field>
+            <field name="dateCreate">
+                <jdbc-field-map type="value" column="date_create"/>
+            </field>
+            <field name="agricultureField">
+                <jdbc-field-map type="one-one" column.ID_FIELD="agriculture_field"/>
+            </field>
+            <field name="pred">
+                <jdbc-field-map type="one-one" column.ID_PREDECESSOR="pred"/>
+            </field>
+            <field name="rot">
+                <jdbc-field-map type="one-one" column.ID_CROP_ROTATION="rot"/>
+            </field>
+            <field name="grade">
+                <jdbc-field-map type="one-one" column.ID_GRADE_CROP="grade"/>
+            </field>
+            <field name="seedsCost">
+                <jdbc-field-map type="value" column="seedsCost"/>
+            </field>
+            <field name="level">
+                <jdbc-field-map type="one-one" column.ID_LEVEL="levelIn"/>
+            </field>
+            <field name="mainP">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="mainP"/>
+            </field>
+            <field name="mainPCost">
+                <jdbc-field-map type="value" column="mainPCost"/>
+            </field>
+            <field name="preP">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="preP"/>
+            </field>
+            <field name="prePCost">
+                <jdbc-field-map type="value" column="prePCost"/>
+            </field>
+            <field name="care">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="care"/>
+            </field>
+            <field name="careCost">
+                <jdbc-field-map type="value" column="careCost"/>
+            </field>
+            <field name="harv">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="harv"/>
+            </field>
+            <field name="harvCost">
+                <jdbc-field-map type="value" column="harvCost"/>
+            </field>
+            <field name="fert">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="fert"/>
+            </field>
+            <field name="fertCost">
+                <jdbc-field-map type="value" column="fertCost"/>
+            </field>
+            <field name="chem">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="chem"/>
+            </field>
+            <field name="chemCost">
+                <jdbc-field-map type="value" column="chemCost"/>
+            </field>
+            <field name="prod">
+                <jdbc-field-map type="value" column="prod"/>
+            </field>
+            <field name="income">
+                <jdbc-field-map type="value" column="income"/>
+            </field>
+            <field name="costs">
+                <jdbc-field-map type="value" column="costs"/>
+            </field>
+            <field name="st">
+                <jdbc-field-map type="one-one" column.id_standart_technologies="id_standart_technology"/>
+            </field>
+            <field name="prodSt">
+                <jdbc-field-map type="value" column="prodSt"/>
+            </field>
+            <field name="incomeSt">
+                <jdbc-field-map type="value" column="incomeSt"/>
+            </field>
+            <field name="costsSt">
+                <jdbc-field-map type="value" column="costsSt"/>
+            </field>
+            <field name="seedsCostSt">
+                <jdbc-field-map type="value" column="seedsCostSt"/>
+            </field>
+            <field name="mainPCostSt">
+                <jdbc-field-map type="value" column="mainPCostSt"/>
+            </field>
+            <field name="prePCostSt">
+                <jdbc-field-map type="value" column="prePCostSt"/>
+            </field>
+            <field name="careCostSt">
+                <jdbc-field-map type="value" column="careCostSt"/>
+            </field>
+            <field name="harvCostSt">
+                <jdbc-field-map type="value" column="harvCostSt"/>
+            </field>
+            <field name="fertCostSt">
+                <jdbc-field-map type="value" column="fertCostSt"/>
+            </field>
+            <field name="chemCostSt">
+                <jdbc-field-map type="value" column="chemCostSt"/>
+            </field>
+            <field name="kInf">
+                <jdbc-field-map type="value" column="kInf"/>
+            </field>
+            <field name="landBase">
+                <jdbc-field-map type="one-one" column.id_land_base="id_land_base"/>
+            </field>
+            <field name="resultsFertilizers">
+                <jdbc-field-map type="one-one" column.id_results_fertilizers="id_results_fertilizers"/>
+            </field>
+        </class>
+
+        <class name="ResultMode2">
+            <jdbc-class-map type="base" table="results_mode2"/>
+            <field name="resultMode2Id">
+                <jdbc-field-map type="value" column="id_result"/>
+            </field>
+            <field name="resultCropRotation">
+                <jdbc-field-map type="one-one" column.id_result_crop_rotation="id_result_crop_rotation"/>
+            </field>
+            <field name="agricultureField">
+                <jdbc-field-map type="one-one" column.ID_FIELD="agriculture_field"/>
+            </field>
+            <field name="pred">
+                <jdbc-field-map type="one-one" column.ID_PREDECESSOR="pred"/>
+            </field>
+            <field name="rot">
+                <jdbc-field-map type="one-one" column.ID_CROP_ROTATION_AGRICULTURE="rot"/>
+            </field>
+            <field name="grade">
+                <jdbc-field-map type="one-one" column.ID_GRADE_CROP="grade"/>
+            </field>
+            <field name="seedsCost">
+                <jdbc-field-map type="value" column="seedsCost"/>
+            </field>
+            <field name="level">
+                <jdbc-field-map type="one-one" column.ID_LEVEL="levelIn"/>
+            </field>
+            <field name="mainP">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="mainP"/>
+            </field>
+            <field name="mainPCost">
+                <jdbc-field-map type="value" column="mainPCost"/>
+            </field>
+            <field name="preP">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="preP"/>
+            </field>
+            <field name="prePCost">
+                <jdbc-field-map type="value" column="prePCost"/>
+            </field>
+            <field name="care">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="care"/>
+            </field>
+            <field name="careCost">
+                <jdbc-field-map type="value" column="careCost"/>
+            </field>
+            <field name="harv">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="harv"/>
+            </field>
+            <field name="harvCost">
+                <jdbc-field-map type="value" column="harvCost"/>
+            </field>
+            <field name="fert">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="fert"/>
+            </field>
+            <field name="fertCost">
+                <jdbc-field-map type="value" column="fertCost"/>
+            </field>
+            <field name="chem">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="chem"/>
+            </field>
+            <field name="chemCost">
+                <jdbc-field-map type="value" column="chemCost"/>
+            </field>
+            <field name="prod">
+                <jdbc-field-map type="value" column="prod"/>
+            </field>
+            <field name="income">
+                <jdbc-field-map type="value" column="income"/>
+            </field>
+            <field name="costs">
+                <jdbc-field-map type="value" column="costs"/>
+            </field>
+            <field name="st">
+                <jdbc-field-map type="one-one" column.id_standart_technologies="id_standart_technology"/>
+            </field>
+            <field name="prodSt">
+                <jdbc-field-map type="value" column="prodSt"/>
+            </field>
+            <field name="incomeSt">
+                <jdbc-field-map type="value" column="incomeSt"/>
+            </field>
+            <field name="costsSt">
+                <jdbc-field-map type="value" column="costsSt"/>
+            </field>
+            <field name="seedsCostSt">
+                <jdbc-field-map type="value" column="seedsCostSt"/>
+            </field>
+            <field name="mainPCostSt">
+                <jdbc-field-map type="value" column="mainPCostSt"/>
+            </field>
+            <field name="prePCostSt">
+                <jdbc-field-map type="value" column="prePCostSt"/>
+            </field>
+            <field name="careCostSt">
+                <jdbc-field-map type="value" column="careCostSt"/>
+            </field>
+            <field name="harvCostSt">
+                <jdbc-field-map type="value" column="harvCostSt"/>
+            </field>
+            <field name="fertCostSt">
+                <jdbc-field-map type="value" column="fertCostSt"/>
+            </field>
+            <field name="chemCostSt">
+                <jdbc-field-map type="value" column="chemCostSt"/>
+            </field>
+            <field name="kInf">
+                <jdbc-field-map type="value" column="kInf"/>
+            </field>
+        </class>
+
+        <class name="Season">
+            <jdbc-class-map type="base" table="seasons"/>
+            <field name="seasonId">
+                <jdbc-field-map type="value" column="id_season"/>
+            </field>
+            <field name="yearStart">
+                <jdbc-field-map type="value" column="year_start"/>
+            </field>
+            <field name="yearEnd">
+                <jdbc-field-map type="value" column="year_end"/>
+            </field>
+            <field name="coefficientsInflation">
+                <jdbc-field-map type="one-many" table="coefficients_of_inflation"
+                                ref-column.id_season="id_season"/>
+            </field>
+        </class>
+
+        <class name="SolutionMode2">
+            <jdbc-class-map type="base" table="solutions_mode2"/>
+            <field name="solutionMode2Id">
+                <jdbc-field-map type="value" column="id_solution"/>
+            </field>
+            <field name="nameSolution">
+                <jdbc-field-map type="value" column="name_solution"/>
+            </field>
+            <field name="dateCreate">
+                <jdbc-field-map type="value" column="date_create"/>
+            </field>
+            <field name="landBase">
+                <jdbc-field-map type="one-one" column.id_land_base="id_land_base"/>
+            </field>
+            <field name="calcYear">
+                <jdbc-field-map type="value" column="calc_year"/>
+            </field>
+            <field name="area">
+                <jdbc-field-map type="value" column="area"/>
+            </field>
+            <field name="prod">
+                <jdbc-field-map type="value" column="prod"/>
+            </field>
+            <field name="income">
+                <jdbc-field-map type="value" column="income"/>
+            </field>
+            <field name="costs">
+                <jdbc-field-map type="value" column="costs"/>
+            </field>
+            <field name="prodSt">
+                <jdbc-field-map type="value" column="prodSt"/>
+            </field>
+            <field name="incomeSt">
+                <jdbc-field-map type="value" column="incomeSt"/>
+            </field>
+            <field name="costsSt">
+                <jdbc-field-map type="value" column="costsSt"/>
+            </field>
+            <field name="status">
+                <jdbc-field-map type="value" column="status"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="resultsCropRotation">
+                <jdbc-field-map type="one-many" table="results_crop_rotation_mode2"
+                                ref-column.id_solution="id_solution"/>
+        </field>
+        </class>
+
+        <class name="StandartTechnology">
+            <jdbc-class-map type="base" table="standard_technologies"/>
+            <field name="standartTechnologyId">
+                <jdbc-field-map type="value" column="id_standart_technologies"/>
+            </field>
+            <field name="levelOfIntensification">
+                <jdbc-field-map type="one-one" column.ID_LEVEL="id_level"/>
+            </field>
+            <field name="gradeOfCrop">
+                <jdbc-field-map type="one-one" column.ID_GRADE_CROP="ID_GRADE"/>
+            </field>
+            <field name="mainProcessing">
+                <jdbc-field-map type="one-one" column.ID_OPERATION = "id_main_processing"/>
+            </field>
+            <field name="preseedingProcessingAndSowing">
+                <jdbc-field-map type="one-one" column.ID_OPERATION = "id_preseeding_processing"/>
+            </field>
+            <field name="careOfCrops">
+                <jdbc-field-map type="one-one" column.ID_OPERATION= "id_care_of_crops"/>
+            </field>
+            <field name="harvesting">
+                <jdbc-field-map type="one-one" column.ID_OPERATION = "id_harvesting"/>
+            </field>
+            <field name="applicationOfFertilizers">
+                <jdbc-field-map type="one-one" column.ID_OPERATION = "id_application_of_fertilizers"/>
+            </field>
+            <field name="chemicalProtectionOfCrops">
+                <jdbc-field-map type="one-one" column.ID_OPERATION="id_chemical_protection"/>
+            </field>
+        </class>
+
+        <class name="SubtypeOfCropRotation">
+            <jdbc-class-map type="base" table="subtypes_of_crop_rotations"/>
+            <field name="subtypeOfCropRotationId">
+                <jdbc-field-map type="value" column="id_subtype"/>
+            </field>
+            <field name="typeOfCropRotation">
+                <jdbc-field-map type="one-one" column.ID_TYPE="ID_TYPE"/>
+            </field>
+            <field name="nameSubtypeOfCropRotation">
+                <jdbc-field-map type="value" column="NAME"/>
+            </field>
+            <field name="descriptionSubtypeOfCropRotation">
+                <jdbc-field-map type="value" column="DESCRIPTION"/>
+            </field>
+            <field name="subtypeOfCropRotation_2_ViewOfCropRotation">
+                <jdbc-field-map type="one-many" table="subtype_of_crop_rotation_2_view_of_crop_rotation"
+                                ref-column.ID_SUBTYPE="ID_SUBTYPE"/>
+            </field>
+        </class>
+
+        <class name="SubtypeOfCropRotation_2_ViewOfCropRotation">
+            <jdbc-class-map type="base" table="subtype_of_crop_rotation_2_view_of_crop_rotation"/>
+            <field name="subtypeOfCropRotation_2_ViewOfCropRotationId">
+                <jdbc-field-map type="value" column="id"/>
+            </field>
+            <field name="viewOfCropRotation">
+                <jdbc-field-map type="one-one" column.ID_VIEW="ID_VIEW"/>
+            </field>
+            <field name="subtypeOfCropRotation">
+                <jdbc-field-map type="one-one" column.ID_SUBTYPE="ID_SUBTYPE"/>
+            </field>
+        </class>
+
+        <class name="TypeOfCropRotation">
+            <jdbc-class-map type="base" table="types_of_crop_rotations"/>
+            <field name="typeOfCropRotationId">
+                <jdbc-field-map type="value" column="id_type"/>
+            </field>
+            <field name="nameTypeOfCropRotation">
+                <jdbc-field-map type="value" column="NAME"/>
+            </field>
+            <field name="destinationTypeOfCropRotation">
+                <jdbc-field-map type="value" column="destination"/>
+            </field>
+            <field name="subtypeOfCropRotation">
+                <jdbc-field-map type="one-many" table="subtypes_of_crop_rotations" ref-column.ID_TYPE="ID_TYPE"/>
+            </field>
+        </class>
+
+        <class name="TypeOfSoil">
+            <jdbc-class-map type="base" table="Types_Of_Soils"/>
+            <field name="typeOfSoilId">
+                <jdbc-field-map type="value" column="id_type_soil"/>
+            </field>
+            <field name="nameTypeSoil">
+                <jdbc-field-map type="value" column="name"/>
+            </field>
+            <field name="groupOfTypesOfSoils">
+                <jdbc-field-map type="one-one" column.ID_GROUP_SOIL="ID_GROUP_SOIL"/>
+            </field>
+            <field name="categoryOfTypesOfSoils">
+                <jdbc-field-map type="one-one" column.ID_CATEGORY="ID_CATEGORY"/>
+            </field>
+            <field name="codeTypeOfSoil">
+                <jdbc-field-map type="value" column="cod_soil"/>
+            </field>
+            <field name = "isKB">
+                <jdbc-field-map type="value" column="is_KB"/>
+            </field>
+            <field name = "isUD">
+                <jdbc-field-map type="value" column="is_UD"/>
+            </field>
+            <field name = "color">
+                <jdbc-field-map type="value" column="color"/>
+            </field>
+            <field name="agricultureField">
+                <jdbc-field-map type="one-many" table="AGRICULTURE_FIELDS" ref-column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="applicationOfFertilizers_2_TypeOfSoil_2_LevelOfIntensification_2_Crop">
+                <jdbc-field-map type="one-many" table="Application_of_fertilizers_2_soil_type_2_level_intan_2_crop"
+                                ref-column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="chemicalProtectionOfCrops_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="chemical_prot_2_soil_type_2_level_of_inten_2_crop_2_f1f2"
+                                ref-column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="mainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="main_proces_2_soil_type_2_lev_of_inten_2_crop_2_pred_2_f1f2"
+                                ref-column.ID_TYPE_SOIL="id_type_soil"/>
+            </field>
+            <field name="preseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2">
+                <jdbc-field-map type="one-many" table="pres_pr_2_soil_type_2_l_inten_2_crop_2_pred_2_mainp_2_f1f2"
+                                ref-column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="cropRotation_2_GroupOfCrops_2_LevelOfIntensification_2_TypeOfSoil">
+                <jdbc-field-map type="one-many" table="crop_rotations_2_group_of_crops_2_level_of_inten_2_soil_type"
+                                ref-column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="gradeOfCrop_2_LevelOfIntensification_2_TypeOfSoil">
+                <jdbc-field-map type="one-many" table="grade_of_crop_2_level_of_intensification_2_type_of_soil"
+                                ref-column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="typeOfSoilAndRecommendations">
+                <jdbc-field-map type="one-many" table="types_of_soils_and_recommendations"
+                                ref-column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="typeOfSoil_2_LevelOfIntensification">
+                <jdbc-field-map type="one-many" table="type_of_soil_2_level_of_intensification"
+                                ref-column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="productivity">
+                <jdbc-field-map type="one-many" table="Productivity" ref-column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="productivityCalculation">
+                <jdbc-field-map type="one-many" table="productivity_calculation" ref-column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            	<field name="humusMineralizationCoefficient_2_TypeOfSoil_2_GroupsOfCrops">
+            		  <jdbc-field-map type="one-many" table="h_m_c_2_type_of_soil_2_groups_of_crops" ref-column.id_type_soil="id_type_of_soil"/>
+            	</field>
+        </class>
+
+        <class name="TypeOfSoil_2_Agriculture">
+            <jdbc-class-map type="base" table="type_of_soil_2_agriculture"/>
+            <field name="typeOfSoil_2_AgricultureId">
+                <jdbc-field-map type="value" column="Id"/>
+            </field>
+            <field name="typeOfSoil">
+                <jdbc-field-map type="one-one" column.ID_TYPE_SOIL="id_type_soil"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+            <field name="color">
+                <jdbc-field-map type="value" column="color"/>
+            </field>
+        </class>
+
+        <class name="TypeOfSoil_2_LevelOfIntensification">
+            <jdbc-class-map type="base" table="type_of_soil_2_level_of_intensification"/>
+            <field name="typeOfSoil_2_LevelOfIntensificationId">
+                <jdbc-field-map type="value" column="id"/>
+            </field>
+            <field name="typeOfSoil">
+                <jdbc-field-map type="one-one" column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="levelOfIntensification">
+                <jdbc-field-map type="one-one" column.ID_LEVEL="ID_LEVEL"/>
+            </field>
+        </class>
+
+        <class name="TypeOfSoilAndRecommendations">
+            <jdbc-class-map type="base" table="types_of_soils_and_recommendations"/>
+            <field name="typeOfSoilAndRecommendationsId">
+                <jdbc-field-map type="value" column="id_recom"/>
+            </field>
+            <field name="typeOfSoil">
+                <jdbc-field-map type="one-one" column.ID_TYPE_SOIL="ID_TYPE_SOIL"/>
+            </field>
+            <field name="thePossibilityOfUsingTypeOfSoil">
+                <jdbc-field-map type="value" column="POSIBILITY_OF_USING"/>
+            </field>
+            <field name="descriptionOfTypeOfSoil">
+                <jdbc-field-map type="value" column="DESCRIPTION"/>
+            </field>
+            <field name="adapterForCrops">
+                <jdbc-field-map type="value" column="ADAPTER_FOR_CROPS"/>
+            </field>
+            <field name="adapterForCropRotations">
+                <jdbc-field-map type="value" column="ADAPTER_FOR_CROP_ROTATIONS"/>
+            </field>
+        </class>
+
+
+        <class name="User">
+            <jdbc-class-map type="base" table="users"/>
+            <field name="userId">
+                <jdbc-field-map type="value" column="id_user"/>
+            </field>
+            <field name="login">
+                <jdbc-field-map type="value" column="login"/>
+            </field>
+            <field name="name">
+                <jdbc-field-map type="value" column="name"/>
+            </field>
+            <field name="role">
+                <jdbc-field-map type="value" column="role"/>
+            </field>
+            <field name="agriculture">
+                <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+            </field>
+        </class>
+
+        <class name="ViewOfCropRotation">
+            <jdbc-class-map type="base" table="views_of_crop_rotations"/>
+            <field name="viewOfCropRotationId">
+                <jdbc-field-map type="value" column="id_view"/>
+            </field>
+            <field name="nameViewOfCropRotation">
+                <jdbc-field-map type="value" column="NAME"/>
+            </field>
+            <field name="descriptionViewOfCropRotation">
+                <jdbc-field-map type="value" column="description"/>
+            </field>
+            <field name="exampleViewOfCropRotation">
+                <jdbc-field-map type="value" column="example"/>
+            </field>
+            <field name="emergenceViewOfCropRotation">
+                <jdbc-field-map type="value" column="emergence"/>
+            </field>
+            <field name="placeOfUseViewOfCropRotation">
+                <jdbc-field-map type="value" column="placeOfUse"/>
+            </field>
+            <field name="subtypeOfCropRotation_2_ViewOfCropRotation">
+                <jdbc-field-map type="one-many" table="subtype_of_crop_rotation_2_view_of_crop_rotation"
+                                ref-column.ID_VIEW="ID_VIEW"/>
+            </field>
+            <field name="cropRotation">
+                <jdbc-field-map type="one-many" table="crop_rotations" ref-column.ID_VIEW="ID_VIEW"/>
+            </field>
+        </class>
+
+        <class name="AssociationTypes">
+            <jdbc-class-map type="base" table="associationtypes" />
+            <field name="associationTypesId">
+                <jdbc-field-map type="value" column="id_associationtypes"/>
+            </field>
+            <field name="area">
+                <jdbc-field-map type="value" column="area"/>
+            </field>
+            <field name="code">
+                <jdbc-field-map type="value" column="code"/>
+            </field>
+            <field name="dominant">
+                <jdbc-field-map type="value" column="dominant"/>
+            </field>
+            <field name="associationFlag">
+                <jdbc-field-map type="value" column="associationFlag"/>
+            </field>
+            <field name="resultFirstStage">
+                <jdbc-field-map type="one-many"  table="result_first_stage" ref-column.id_associationtypes="id_associationtypes"/>
+            </field>
+            <field name="associationtypes_2_TypeOfSoil_2_Agricultures">
+                <jdbc-field-map type="one-many"  table="associationtypes_2_type_of_soil_2_agricultures" ref-column.id_associationtypes="id_associationtypes"/>
+            </field>
+         </class>
+
+         <class name="Associationtypes_2_TypeOfSoil_2_Agricultures">
+             <jdbc-class-map type="base" table="associationtypes_2_type_of_soil_2_agricultures"/>
+             <field name="id">
+                 <jdbc-field-map type="value" column="Id"/>
+             </field>
+             <field name="associationType">
+                 <jdbc-field-map type="one-one" column.id_associationtypes="id_associationtypes"/>
+             </field>
+             <field name="soil">
+                 <jdbc-field-map type="one-one" column.id_type_soil="id_type_of_soil"/>
+             </field>
+             <field name="agriculture">
+                 <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+             </field>
+         </class>
+
+
+        <class name="Money">
+            <jdbc-class-map type="base" table="money"/>
+            <field name="moneyId">
+                <jdbc-field-map type="value" column="id_money"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-one" column.id_crop="id_culture"/>
+            </field>
+            <field name="levelOfIntensification">
+                <jdbc-field-map type="one-one" column.id_level="id_level"/>
+            </field>
+            <field name="aexpenses">
+                <jdbc-field-map type="value" column="aexpenses"/>
+            </field>
+            <field name="price">
+                <jdbc-field-map type="value" column="price"/>
+            </field>
+         </class>
+
+        <class name="OptimalLandSolution">
+            <jdbc-class-map type="base" table="optimal_land_solution" />
+            <field name="id">
+                <jdbc-field-map type="value" column="id_land_solution"/>
+            </field>
+            <field name="landBase">
+                <jdbc-field-map type="one-one" column.id_land_base="id_land_base"/>
+            </field>
+            <field name="name">
+                <jdbc-field-map type="value" column="name_solution"/>
+            </field>
+            <field name="dateCreate">
+                <jdbc-field-map type="value" column="date_create"/>
+            </field>
+            <field name="dateLastChange">
+                <jdbc-field-map type="value" column="date_last_change"/>
+            </field>
+            <field name="state">
+                <jdbc-field-map type="one-one" column.id_state="id_state"/>
+            </field>
+            <field name="function">
+                <jdbc-field-map type="value" column="function"/>
+            </field>
+            <field name="mode">
+                <jdbc-field-map type="value" column="mode"/>
+            </field>
+            <field name="flag">
+                <jdbc-field-map type="value" column="flag"/>
+            </field>
+            <field name="delta2">
+                <jdbc-field-map type="value" column="delta_2"/>
+            </field>
+            <field name="delta3">
+                <jdbc-field-map type="value" column="delta_3"/>
+            </field>
+           <field name="plans">
+                <jdbc-field-map type="one-many"  table="solution_plans" ref-column.id_land_solution="id_land_solution"/>
+            </field>
+            <field name="resultFirstStage">
+                <jdbc-field-map type="one-many" table="result_first_stage" ref-column.id_land_solution="id_land_solution"/>
+            </field>
+           <field name="resultSecondThirdStageAlgorithm1">
+                <jdbc-field-map type="one-many"  table="result_second_third_stage" ref-column.id_land_solution="id_land_solution_algorithm1"/>
+            </field>
+            <field name="resultSecondThirdStageAlgorithm2">
+                <jdbc-field-map type="one-many"  table="result_second_third_stage" ref-column.id_land_solution="id_land_solution_algorithm2"/>
+            </field>
+            <field name="resultSecondThirdStageAlgorithm3">
+                <jdbc-field-map type="one-many"  table="result_second_third_stage" ref-column.id_land_solution="id_land_solution_algorithm3"/>
+            </field>
+         </class>
+
+         <class name="SolutionPlans">
+             <jdbc-class-map type="base" table="solution_plans"/>
+             <field name="id">
+                 <jdbc-field-map type="value" column="id"/>
+             </field>
+             <field name="solution">
+                 <jdbc-field-map type="one-one" column.id_land_solution="id_land_solution"/>
+             </field>
+             <field name="crop">
+                 <jdbc-field-map type="one-one" column.id_crop="id_crop"/>
+             </field>
+             <field name="plan">
+                 <jdbc-field-map type="value" column="plan"/>
+             </field>
+             <field name="cond">
+                  <jdbc-field-map type="value" column="cond"/>
+              </field>
+          </class>
+
+        <class name="ResultFirstStage">
+            <jdbc-class-map type="base" table="result_first_stage"/>
+            <field name="id">
+                <jdbc-field-map type="value" column="id_result_first_stage"/>
+            </field>
+            <field name="solution">
+                <jdbc-field-map type="one-one" column.id_land_solution="id_land_solution"/>
+            </field>
+            <field name="typeOfSoil">
+                <jdbc-field-map type="one-one" column.id_type_soil="id_type_soil"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-one" column.id_crop="id_crop"/>
+            </field>
+            <field name="ga">
+                <jdbc-field-map type="value" column="ga"/>
+            </field>
+            <field name="zent">
+                <jdbc-field-map type="value" column="zent"/>
+            </field>
+            <field name="associationTypes">
+                <jdbc-field-map type="one-one" column.id_associationtypes="id_associationtypes"/>
+            </field>
+         </class>
+
+        <class name="ResultSecondThirdStage">
+             <jdbc-class-map type="base" table="result_second_third_stage" />
+             <field name="id">
+                 <jdbc-field-map type="value" column="id_result_second_third_stage"/>
+             </field>
+             <field name="optimalLandSolutionAlgorithm1">
+                 <jdbc-field-map type="one-one" column.id_land_solution="id_land_solution_algorithm1"/>
+             </field>
+             <field name="optimalLandSolutionAlgorithm2">
+                  <jdbc-field-map type="one-one" column.id_land_solution="id_land_solution_algorithm2"/>
+             </field>
+             <field name="optimalLandSolutionAlgorithm3">
+                  <jdbc-field-map type="one-one" column.id_land_solution="id_land_solution_algorithm3"/>
+             </field>
+             <field name="typeOfSoil">
+                 <jdbc-field-map type="one-one" column.id_type_soil="id_typeofsoil"/>
+             </field>
+             <field name="crop">
+                 <jdbc-field-map type="one-one" column.id_crop="id_crop"/>
+             </field>
+             <field name="agricultureField">
+                 <jdbc-field-map type="one-one" column.id_field="id_field"/>
+             </field>
+             <field name="area">
+                 <jdbc-field-map type="value" column="area"/>
+             </field>
+             <field name="delta">
+                 <jdbc-field-map type="value" column="delta"/>
+             </field>
+             <field name="productivity">
+                  <jdbc-field-map type="value" column="productivity"/>
+              </field>
+              <field name="levelOfIntensification">
+                  <jdbc-field-map type="one-one" column.id_level="id_level"/>
+              </field>
+        </class>
+
+        <class name="SolutionState">
+            <jdbc-class-map type="base" table="solution_state"/>
+            <field name="stateId">
+                <jdbc-field-map type="value" column="id_state"/>
+            </field>
+            <field name="name">
+                <jdbc-field-map type="value" column="name_state"/>
+            </field>
+         </class>
+
+        <class name="Microelement">
+            <jdbc-class-map type="base" table="microelement"/>
+            <field name="microelementId">
+                <jdbc-field-map type="value" column="id_microelement"/>
+            </field>
+            <field name="microelementName">
+                <jdbc-field-map type="value" column="microelement_name"/>
+            </field>
+            <field name="applicationOfFertilizers_2_microelement">
+                <jdbc-field-map type="one-many" table="application_of_fertilizers_2_microelement" ref-column.id_microelement="id_microelement"/>
+            </field>
+            <field name="removalOfMicroelement">
+                <jdbc-field-map type="one-many" table="removal_of_microelements" ref-column.id_microelement="id_microelement"/>
+            </field>
+            <field name="coefficientOfUsingMicroelementFromFert">
+                <jdbc-field-map type="one-many" table="coeff_using_microel_from_fert" ref-column.id_microelement="id_microelement"/>
+            </field>
+            <field name="coefficientOfUsingMicroelementFromSoil">
+                <jdbc-field-map type="one-many" table="coeff_using_microel_from_soil" ref-column.id_microelement="id_microelement"/>
+            </field>
+            <field name="correctiveCoefficients">
+                  <jdbc-field-map type="one-many" table="corrective_coefficients" ref-column.id_microelement="id_microelement"/>
+            </field>
+            <field name="gropsMicroelement">
+                  <jdbc-field-map type="one-many" table="group_microelements" ref-column.id_microelement="id_microelement"/>
+            </field>
+            <field name="point_2_Microelement_2_Method">
+                  <jdbc-field-map type="one-many" table="point_2_microelement_2_method" ref-column.id_microelement="id_microelement"/>
+            </field>
+        </class>
+
+        <class name="ResultsFertilizers">
+            <jdbc-class-map type="base" table="results_fertilizers"/>
+            <field name="resultsFertilizersId">
+                <jdbc-field-map type="value" column="id_results_fertilizers"/>
+            </field>
+            <field name="date">
+                  <jdbc-field-map type="value" column="date"/>
+            </field>
+            <field name="resultsFertilizersName">
+                  <jdbc-field-map type="value" column="results_fertilizers_name"/>
+            </field>
+            <field name="resultMode1">
+                 <jdbc-field-map type="one-one" column.id="id_results_mode1"/>
+            </field>
+            <field name="agricultureField">
+                <jdbc-field-map type="one-one" column.ID_FIELD="agriculture_field"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-one" column.id_crop="id_crop"/>
+            </field>
+            <field name="pred">
+                <jdbc-field-map type="one-one" column.id_predecessor="id_pred"/>
+            </field>
+            <field name="systFert">
+                <jdbc-field-map type="one-one" column.id_operation="id_syst_fert"/>
+            </field>
+            <field name="palnningYield">
+                    <jdbc-field-map type="value" column="planning_yield"/>
+            </field>
+            <field name="predDoze">
+                    <jdbc-field-map type="value" column="pred_doze"/>
+            </field>
+            <field name="predYeild">
+                    <jdbc-field-map type="value" column="pred_yield"/>
+            </field>
+            <field name="average_h">
+                    <jdbc-field-map type="value" column="average_h"/>
+            </field>
+            <field name="average_p">
+                    <jdbc-field-map type="value" column="average_p"/>
+            </field>
+            <field name="average_ph">
+                    <jdbc-field-map type="value" column="average_ph"/>
+            </field>
+            <field name="removal_n">
+                    <jdbc-field-map type="value" column="removal_n"/>
+            </field>
+            <field name="removal_p">
+                    <jdbc-field-map type="value" column="removal_p"/>
+            </field>
+            <field name="removal_ph">
+                    <jdbc-field-map type="value" column="removal_ph"/>
+            </field>
+            <field name="yearOfUsing">
+                    <jdbc-field-map type="value" column="year_of_using"/>
+            </field>
+            <field name="coeffFromFertN">
+                    <jdbc-field-map type="value" column="coeff_from_fert_n"/>
+            </field>
+            <field name="coeffFromFertP">
+                    <jdbc-field-map type="value" column="coeff_from_fert_p"/>
+            </field>
+            <field name="coeffFromFertPh">
+                    <jdbc-field-map type="value" column="coeff_from_fert_ph"/>
+            </field>
+            <field name="coeffFromSoilN">
+                    <jdbc-field-map type="value" column="coeff_from_soil_n"/>
+            </field>
+            <field name="coeffFromSoilP">
+                    <jdbc-field-map type="value" column="coeff_from_soil_p"/>
+            </field>
+            <field name="coeffFromSoilPh">
+                    <jdbc-field-map type="value" column="coeff_from_soil_ph"/>
+            </field>
+            <field name="takeaway_N">
+                    <jdbc-field-map type="value" column="takeaway_N"/>
+            </field>
+            <field name="takeaway_P">
+                     <jdbc-field-map type="value" column="takeaway_P"/>
+            </field>
+            <field name="takeaway_Ph">
+                     <jdbc-field-map type="value" column="takeaway_Ph"/>
+            </field>
+            <field name="m">
+                    <jdbc-field-map type="value" column="m"/>
+            </field>
+            <field name="ph_Content">
+                    <jdbc-field-map type="value" column="ph_Content"/>
+            </field>
+            <field name="p_Content">
+                    <jdbc-field-map type="value" column="p_Content"/>
+            </field>
+            <field name="value_humus">
+                    <jdbc-field-map type="value" column="value_humus"/>
+            </field>
+            <field name="value_of_nitrogen_in_humus">
+                    <jdbc-field-map type="value" column="value_of_nitrogen_in_humus"/>
+            </field>
+            <field name="value_forms_of_nitrogen">
+                    <jdbc-field-map type="value" column="value_forms_of_nitrogen"/>
+            </field>
+            <field name="number_digestible_N">
+                    <jdbc-field-map type="value" column="number_digestible_N"/>
+            </field>
+            <field name="number_digestible_P">
+                    <jdbc-field-map type="value" column="number_digestible_P"/>
+            </field>
+            <field name="number_digestible_Ph">
+                    <jdbc-field-map type="value" column="number_digestible_Ph"/>
+            </field>
+            <field name="real_possible_harvest_N">
+                    <jdbc-field-map type="value" column="real_possible_harvest_N"/>
+            </field>
+            <field name="real_possible_harvest_P">
+                    <jdbc-field-map type="value" column="real_possible_harvest_P"/>
+            </field>
+            <field name="real_possible_harvest_Ph">
+                    <jdbc-field-map type="value" column="real_possible_harvest_Ph"/>
+            </field>
+            <field name="absorption">
+                    <jdbc-field-map type="value" column="absorption"/>
+            </field>
+            <field name="accumulated_balance">
+                    <jdbc-field-map type="value" column="accumulated_balance"/>
+            </field>
+            <field name="accumulated_balance_in_soil">
+                    <jdbc-field-map type="value" column="accumulated_balance_in_soil"/>
+            </field>
+            <field name="common_amount_of_digestible_N">
+                    <jdbc-field-map type="value" column="common_amount_of_digestible_N"/>
+            </field>
+            <field name="common_amount_of_digestible_Ph">
+                    <jdbc-field-map type="value" column="common_amount_of_digestible_Ph"/>
+            </field>
+            <field name="common_amount_of_digestible_P">
+                    <jdbc-field-map type="value" column="common_amount_of_digestible_P"/>
+            </field>
+            <field name="accumulated_balance_in_leavings">
+                    <jdbc-field-map type="value" column="accumulated_balance_in_leavings"/>
+            </field>
+            <field name="need_in_N">
+                    <jdbc-field-map type="value" column="need_in_N"/>
+            </field>
+            <field name="need_in_Ph">
+                    <jdbc-field-map type="value" column="need_in_Ph"/>
+            </field>
+            <field name="need_in_P">
+                    <jdbc-field-map type="value" column="need_in_P"/>
+            </field>
+            <field name="additional_N">
+                    <jdbc-field-map type="value" column="additional_N"/>
+            </field>
+            <field name="additional_P">
+                    <jdbc-field-map type="value" column="additional_P"/>
+            </field>
+            <field name="additional_Ph">
+                    <jdbc-field-map type="value" column="additional_Ph"/>
+            </field>
+            <field name="coeff1_requirement">
+                    <jdbc-field-map type="value" column="coeff1_requirement"/>
+            </field>
+            <field name="coeff2_requirement">
+                    <jdbc-field-map type="value" column="coeff2_requirement"/>
+            </field>
+            <field name="coeff3_requirement">
+                    <jdbc-field-map type="value" column="coeff3_requirement"/>
+            </field>
+            <field name="isAgrSyst">
+                     <jdbc-field-map type="value" column="is_agr_syst"/>
+             </field>
+            <field name="applicationOfFertilizers_2_microelements_2_resultsFertilizers">
+                <jdbc-field-map type="one-many" table="application_of_fertilizers_2_microelement_2_results_fertilizer" ref-column.id_results_fertilizers="id_results_fertilizers"/>
+            </field>
+        </class>
+
+        <class name="ApplicationOfFertilizers_2_Microelement">
+            <jdbc-class-map type="base" table="application_of_fertilizers_2_microelement"/>
+            <field name="applicationOfFertilizers_2_MicroelementId">
+                <jdbc-field-map type="value" column="id_application_of_fertilizers_2_microelement"/>
+            </field>
+            <field name="microelement">
+                <jdbc-field-map type="one-one" column.id_microelement="id_microelement"/>
+            </field>
+            <field name="applicationOfFertilizers">
+                <jdbc-field-map type="one-one" column.id_operation="id_operation"/>
+            </field>
+            <field name="applicationOfFertilizers_2_microelements_2_resultsFertilizers">
+                <jdbc-field-map type="one-many" table="application_of_fertilizers_2_microelement_2_results_fertilizer" ref-column.id_application_of_fertilizers_2_microelement="id_application_of_fertilizers_2_microelement"/>
+            </field>
+        </class>
+
+        <class name="ApplicationOfFertilizers_2_Microelements_2_ResultsFertilizers">
+            <jdbc-class-map type="base" table="application_of_fertilizers_2_microelement_2_results_fertilizer"/>
+            <field name="applicationOfFertilizers_2_Microelements_2_ResultsFertilizersId">
+                <jdbc-field-map type="value" column="id_application_of_fertilizers_2_microel_2_res_fert"/>
+            </field>
+            <field name="resultsFertilizers">
+                <jdbc-field-map type="one-one" column.id_results_fertilizers="id_results_fertilizers"/>
+            </field>
+            <field name="applicationOfFertilizers_2_microelements">
+                <jdbc-field-map type="one-one" column.id_application_of_fertilizers_2_microelement="id_application_of_fertilizers_2_microelement"/>
+            </field>
+            <field name="date">
+                  <jdbc-field-map type="value" column="date"/>
+            </field>
+            <field name="correctionResult">
+                <jdbc-field-map type="one-many" table="correction_result" ref-column.id_application_of_fertilizers_2_microel_2_res_fert="id_application_of_fertilizers_2_microel_2_res_fert"/>
+            </field>
+        </class>
+
+        <class name="RemovalOfMicroelement">
+            <jdbc-class-map type="base" table="removal_of_microelements"/>
+            <field name="removalOfMicroelementId">
+                <jdbc-field-map type="value" column="id_removal_of_microelements"/>
+            </field>
+            <field name="crop">
+                <jdbc-field-map type="one-one" column.id_crop="id_crop"/>
+            </field>
+            <field name="microelement">
+                <jdbc-field-map type="one-one" column.id_microelement="id_microelement"/>
+            </field>
+            <field name="value">
+                <jdbc-field-map type="value" column="value"/>
+            </field>
+        </class>
+
+        <class name="CoefficientOfUsingMicroelementFromFert">
+             <jdbc-class-map type="base" table="coeff_using_microel_from_fert"/>
+            <field name="coefficientOfUsingMicroelementFromFertId">
+                <jdbc-field-map type="value" column="id_coeff_using_microel_from_fert"/>
+            </field>
+            <field name="microelement">
+                 <jdbc-field-map type="one-one" column.id_microelement="id_microelement"/>
+            </field>
+            <field name="yearOfUsing">
+                <jdbc-field-map type="value" column="year_of_using"/>
+            </field>
+            <field name="minValue">
+                <jdbc-field-map type="value" column="min_value"/>
+            </field>
+            <field name="maxValue">
+                <jdbc-field-map type="value" column="max_value"/>
+            </field>
+        </class>
+
+        <class name="CoefficientOfUsingMicroelementFromSoil">
+             <jdbc-class-map type="base" table="coeff_using_microel_from_soil"/>
+            <field name="coefficientOfUsingMicroelementFromSoilId">
+                <jdbc-field-map type="value" column="id_coeff_using_microel_from_soil"/>
+            </field>
+            <field name="microelement">
+                 <jdbc-field-map type="one-one" column.id_microelement="id_microelement"/>
+            </field>
+            <field name="amountInSoil">
+                <jdbc-field-map type="value" column="amount_of_microel_in_soil"/>
+            </field>
+            <field name="value">
+                <jdbc-field-map type="value" column="coefficient"/>
+            </field>
+        </class>
+
+        <class name="Month">
+            <jdbc-class-map type="base" table="month"/>
+            <field name="monthId">
+                <jdbc-field-map type="value" column="id_month"/>
+            </field>
+            <field name="nameMonth">
+                <jdbc-field-map type="value" column="name_month"/>
+            </field>
+             <field name="correctionResult">
+                 <jdbc-field-map type="many-many" element-column.id_correction_result="id_correction_result"
+                 table="correction_result_2_month" ref-column.id_month="id_month"/>
+             </field>
+        </class>
+
+        <class name="CorrectionResult">
+            <jdbc-class-map type="base" table="correction_result"/>
+            <field name="correctionResultId">
+                <jdbc-field-map type="value" column="id_correction_result"/>
+            </field>
+            <field name="application_of_fertilizers_2_microel_2_res_fert">
+                 <jdbc-field-map type="one-one" column.id_application_of_fertilizers_2_microel_2_res_fert="id_application_of_fertilizers_2_microel_2_res_fert"/>
+            </field>
+            <field name="date">
+                <jdbc-field-map type="value" column="date"/>
+            </field>
+            <field name="temperature">
+                <jdbc-field-map type="value" column="temperature"/>
+            </field>
+            <field name="humid">
+                <jdbc-field-map type="value" column="humid"/>
+            </field>
+             <field name="months">
+                 <jdbc-field-map type="many-many" element-column.id_month="id_month"
+                 table="correction_result_2_month" ref-column.id_correction_result="id_correction_result"/>
+             </field>
+        </class>
+
+    <class name="HumusMineralizationCoefficient">
+    	<jdbc-class-map type="base" table="humus_mineralization_coefficient"/>
+    	<field name="idHumusMineralizationCoefficient">
+    		<jdbc-field-map type="value" column="id_humus_mineralization_coefficient"/>
+    	</field>
+    	<field name="cmhValue">
+    		<jdbc-field-map type="value" column="cmh_value"/>
+    	</field>
+    	<field name="nValue">
+    		<jdbc-field-map type="value" column="N_value"/>
+    	</field>
+    	<field name="humusMineralizationCoefficient_2_TypeOfSoil_2_GroupsOfCrops">
+    		  <jdbc-field-map type="one-many" table="h_m_c_2_type_of_soil_2_groups_of_crops" ref-column.id_humus_mineralization_coefficient="id_humus_mineralization_coefficient"/>
+    	</field>
+    </class>
+
+    <class name="HumusMineralizationCoefficient_2_TypeOfSoil_2_GroupsOfCrops">
+    	<jdbc-class-map type="base" table="h_m_c_2_type_of_soil_2_groups_of_crops"/>
+    	<field name="id">
+    		<jdbc-field-map type="value" column="id"/>
+    	</field>
+    	<field name="humusMineralizationCoefficient">
+    		 <jdbc-field-map type="one-one" column.id_humus_mineralization_coefficient="id_humus_mineralization_coefficient"/>
+    	</field>
+    	<field name="typeOfSoil">
+    		 <jdbc-field-map type="one-one" column.id_type_soil="id_type_of_soil"/>
+    	</field>
+    	<field name="groupOfCrops">
+    		<jdbc-field-map type="one-one" column.id_groups_of_crops_for_coeff="id_group_of_crops"/>
+    	</field>
+    </class>
+
+    <class name="GroupOfCropForCoeff">
+    	<jdbc-class-map type="base" table="groups_of_crops_for_coeff"/>
+    	<field name="idGroupOfCropForCoeff">
+    		<jdbc-field-map type="value" column="id_groups_of_crops_for_coeff"/>
+    	</field>
+    	<field name="name">
+    		<jdbc-field-map type="value" column="name"/>
+    	</field>
+    	<field name="crops">
+              <jdbc-field-map type="one-many" table="crops" ref-column.id_groups_of_crops_for_coeff="id_group_crop_for_coeff"/>
+        </field>
+    	<field name="humusMineralizationCoefficient_2_TypeOfSoil_2_GroupsOfCrops">
+    		  <jdbc-field-map type="one-many" table="h_m_c_2_type_of_soil_2_groups_of_crops" ref-column.id_groups_of_crops_for_coeff="id_group_of_crops"/>
+    	</field>
+    	<field name="correctiveCoefficients">
+              <jdbc-field-map type="one-many" table="corrective_coefficients" ref-column.id_groups_of_crops_for_coeff="id_group_of_crops"/>
+        </field>
+    </class>
+
+    <class name="CorrectiveCoefficients">
+    	<jdbc-class-map type="base" table="corrective_coefficients"/>
+    	<field name="idCorrectiveCoefficients">
+    		<jdbc-field-map type="value" column="id_corrective_coefficients"/>
+    	</field>
+    	<field name="microelement">
+    		 <jdbc-field-map type="one-one" column.id_microelement="id_microelement"/>
+    	</field>
+    	<field name="groupOfCrop">
+    		 <jdbc-field-map type="one-one" column.id_groups_of_crops_for_coeff="id_group_of_crops"/>
+    	</field>
+    	<field name="sufficiency">
+    		<jdbc-field-map type="value" column="sufficiency"/>
+    	</field>
+    	<field name="value">
+    		<jdbc-field-map type="value" column="value"/>
+    	</field>
+    </class>
+
+    <class name="GroupMicroelements">
+        <jdbc-class-map type="base" table="group_microelements"/>
+        <field name="idGroup">
+            <jdbc-field-map type="value" column="id"/>
+        </field>
+        <field name="name">
+            <jdbc-field-map type="value" column="name_group"/>
+        </field>
+        <field name="beginRange">
+            <jdbc-field-map type="value" column="begin_range"/>
+        </field>
+        <field name="endRange">
+            <jdbc-field-map type="value" column="end_range"/>
+        </field>
+        <field name="standartColor">
+            <jdbc-field-map type="value" column="standart_color"/>
+        </field>
+        <field name="method">
+             <jdbc-field-map type="one-one" column.Id="id_method"/>
+        </field>
+        <field name="microelement">
+             <jdbc-field-map type="one-one" column.id_microelement="id_microelement"/>
+        </field>
+    </class>
+
+    <class name="Method">
+        <jdbc-class-map type="base" table="method"/>
+        <field name="idMethod">
+            <jdbc-field-map type="value" column="Id"/>
+        </field>
+        <field name="name">
+            <jdbc-field-map type="value" column="name_method"/>
+        </field>
+        <field name="gropsMicroelement">
+              <jdbc-field-map type="one-many" table="group_microelements" ref-column.Id="id_method"/>
+        </field>
+        <field name="point_2_Microelement_2_Method">
+              <jdbc-field-map type="one-many" table="point_2_microelement_2_method" ref-column.Id="id_method"/>
+        </field>
+    </class>
+
+    <class name="Point_2_Microelement_2_Method">
+        <jdbc-class-map type="base" table="point_2_microelement_2_method"/>
+        <field name="id">
+            <jdbc-field-map type="value" column="Id"/>
+        </field>
+        <field name="point">
+             <jdbc-field-map type="one-one" column.id_point="id_point"/>
+        </field>
+        <field name="microelement">
+             <jdbc-field-map type="one-one" column.id_microelement="id_microelement"/>
+        </field>
+        <field name="method">
+            <jdbc-field-map type="one-one" column.Id="id_method"/>
+        </field>
+    </class>
+
+    <class name="MetaData">
+        <jdbc-class-map type="base" table="meta_data"/>
+        <field name="idMetaData">
+            <jdbc-field-map type="value" column="Id"/>
+        </field>
+        <field name="table_name">
+            <jdbc-field-map type="value" column="table_name"/>
+        </field>
+        <field name="userDataToBaseData">
+              <jdbc-field-map type="one-many" table="user_data_to_base_data" ref-column.Id="id_meta_data"/>
+        </field>
+    </class>
+
+    <class name="UserDataToBaseData">
+        <jdbc-class-map type="base" table="user_data_to_base_data"/>
+        <field name="id">
+            <jdbc-field-map type="value" column="Id"/>
+        </field>
+        <field name="agriculture">
+             <jdbc-field-map type="one-one" column.id_agriculture="id_agriculture"/>
+        </field>
+        <field name="metaData">
+             <jdbc-field-map type="one-one" column.Id="id_meta_data"/>
+        </field>
+        <field name="isBD">
+            <jdbc-field-map type="value" column="id_BD"/>
+        </field>
+        <field name="isUD">
+            <jdbc-field-map type="value" column="id_UD"/>
+        </field>
+    </class>
+
+    </package>
+</mapping>

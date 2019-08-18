@@ -1,0 +1,1416 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<jdo>
+    <package name="core.data">
+
+        <class name="AgricultureField" objectid-class="AgricultureFieldId">
+            <field name="agricultureFieldId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="typeOfSoil" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+            <field name="poligon">
+                <collection element-type="Point"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="field"/>
+            </field>
+            <field name="landBase_2_agricultureField" persistence-modifier="persistent">
+                <collection element-type="LandBase_2_AgricultureField"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="agricultureField"/>
+            </field>
+            <field name="cropRotationOfAgriculture_2_AgricultureField">
+                <collection element-type="CropRotationOfAgriculture_2_AgricultureField"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="agricultureField"/>
+            </field>
+            <field name="crop_2_AgricultureField_2_Year">
+                <collection element-type="Crop_2_AgricultureField_2_Year"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="agricultureField"/>
+            </field>
+            <field name="resultsMode1">
+                <collection element-type="ResultMode1"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="agricultureField"/>
+            </field>
+            <field name="resultsMode2">
+            <collection element-type="ResultMode2"/>
+            <extension vendor-name="kodo" key="inverse-owner" value="agricultureField"/>
+        </field>
+            <field name="resultsFertilizers">
+                <collection element-type="ResultsFertilizers"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="agricultureField"/>
+            </field>
+        <field name="topsoilDepth" persistence-modifier="persistent"></field>
+        <field name="soilBulk" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="Agricultures" objectid-class="AgriculturesId">
+            <field name="agricultureId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="agricultureFields">
+                <collection element-type="AgricultureField"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="agriculture"/>
+            </field>
+            <field name="user" persistence-modifier="persistent"></field>
+            <field name="cropRotationsOfAgriculture">
+                <collection element-type="CropRotationOfAgriculture"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="agriculture"/>
+            </field>
+            <field name="typeOfSoils">
+                <collection element-type="TypeOfSoil_2_Agriculture"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="agriculture"/>
+            </field>
+            <field name="landBases">
+                <collection element-type="LandBase"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="agriculture"/>
+            </field>
+        </class>
+
+        <class name="AgrochemicalSoilSurvey" objectid-class="AgrochemicalSoilSurveyId">
+            <field name="agrochemicalSoilSurveyId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="landBase" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="ApplicationOfFertilizers" objectid-class="ApplicationOfFertilizersId">
+            <field name="applicationOfFertilizersId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="costOfApplicationOfFertilizers">
+                <collection element-type="CostOfApplicationOfFertilizers"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="applicationOfFertilizers"/>
+            </field>
+            <field name="applicationOfFertilizers_2_LevelOfIntensification">
+                <collection element-type="ApplicationOfFertilizers_2_LevelOfIntensification"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="applicationOfFertilizers"/>
+            </field>
+            <field name="standartTechnology">
+                <collection element-type="StandartTechnology"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="applicationOfFertilizers"/>
+            </field>
+            <field name="applicationOfFertilizers_2_TypeOfSoil_2_LevelOfIntensification_2_Crop">
+                <collection element-type="ApplicationOfFertilizers_2_TypeOfSoil_2_LevelOfIntensification_2_Crop"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="applicationOfFertilizers"/>
+            </field>
+            <field name="applicationOfFertilizers_2_Microelement">
+                <collection element-type="ApplicationOfFertilizers_2_Microelement"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="applicationOfFertilizers"/>
+            </field>
+            <field name="resultsFertilizers">
+                <collection element-type="ResultsFertilizers"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="agricultureField"/>
+            </field>
+        </class>
+
+        <class name="ApplicationOfFertilizers_2_Agriculture" objectid-class="ApplicationOfFertilizers_2_AgricultureId">
+            <field name="applicationOfFertilizers_2_AgricultureId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="applicationOfFertilizers" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="ApplicationOfFertilizers_2_LevelOfIntensification"
+               objectid-class="ApplicationOfFertilizers_2_LevelOfIntensificationId">
+            <field name="applicationOfFertilizers_2_LevelOfIntensificationId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="applicationOfFertilizers" persistence-modifier="persistent"></field>
+            <field name="levelOfIntensification" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="ApplicationOfFertilizers_2_TypeOfSoil_2_LevelOfIntensification_2_Crop"
+               objectid-class="ApplicationOfFertilizers_2_TypeOfSoil_2_LevelOfIntensification_2_CropId">
+            <field name="applicationOfFertilizers_2_TypeOfSoil_2_LevelOfIntensification_2_CropId"
+                   primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="applicationOfFertilizers" persistence-modifier="persistent"></field>
+            <field name="levelOfIntensification" persistence-modifier="persistent"></field>
+            <field name="typeOfSoil" persistence-modifier="persistent"></field>
+            <field name="crop" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CareOfCrops" objectid-class="CareOfCropsId">
+            <field name="careOfCropsId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="costOfCareOfCrops">
+                <collection element-type="CostOfCareOfCrops"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="careOfCrops"/>
+            </field>
+            <field name="standartTechnology">
+                <collection element-type="StandartTechnology"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="careOfCrops"/>
+            </field>
+            <field name="careOfCrops_2_LevelOfIntensification_2_Crop_2_F1_2_F2">
+                <collection element-type="CareOfCrops_2_LevelOfIntensification_2_Crop_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="careOfCrops"/>
+            </field>
+        </class>
+
+        <class name="CareOfCrops_2_Agriculture" objectid-class="CareOfCrops_2_AgricultureId">
+            <field name="careOfCrops_2_AgricultureId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="careOfCrops" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CareOfCrops_2_LevelOfIntensification_2_Crop_2_F1_2_F2"
+               objectid-class="CareOfCrops_2_LevelOfIntensification_2_Crop_2_F1_2_F2Id">
+            <field name="careOfCrops_2_LevelOfIntensification_2_Crop_2_F1_2_F2Id" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="careOfCrops" persistence-modifier="persistent"></field>
+            <field name="levelOfIntensification" persistence-modifier="persistent"></field>
+            <field name="crop" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CategoryOfTypesOfSoils" objectid-class="CategoryOfTypesOfSoilsId">
+            <field name="categoryOfTypesOfSoilsId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="typeOfSoil">
+                <collection element-type="TypeOfSoil"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="categoryOfTypesOfSoils"/>
+            </field>
+        </class>
+
+        <class name="ChemicalProtection_2_Agriculture" objectid-class="ChemicalProtection_2_AgricultureId">
+            <field name="chemicalProtection_2_AgricultureId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="chemicalProtectionOfCrops" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="ChemicalProtectionOfCrops" objectid-class="ChemicalProtectionOfCropsId">
+            <field name="chemicalProtectionOfCropsId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="costOfChemicalProtectionOfCrops">
+                <collection element-type="CostOfChemicalProtectionOfCrops"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="chemicalProtectionOfCrops"/>
+            </field>
+            <field name="costOfRawMaterialForChemicalProtection">
+                <collection element-type="CostOfRawMaterialForChemicalProtection"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="chemicalProtectionOfCrops"/>
+            </field>
+            <field name="standartTechnology">
+                <collection element-type="StandartTechnology"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="chemicalProtectionOfCrops"/>
+            </field>
+            <field name="chemicalProtectionOfCrops_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_F1_2_F2">
+                <collection
+                        element-type="ChemicalProtectionOfCrops_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="chemicalProtectionOfCrops"/>
+            </field>
+        </class>
+
+        <class name="ChemicalProtectionOfCrops_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_F1_2_F2"
+               objectid-class="ChemicalProtectionOfCrops_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_F1_2_F2Id">
+            <field name="chemicalProtectionOfCrops_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_F1_2_F2Id"
+                   primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="chemicalProtectionOfCrops" persistence-modifier="persistent"></field>
+            <field name="levelOfIntensification" persistence-modifier="persistent"></field>
+            <field name="typeOfSoil" persistence-modifier="persistent"></field>
+            <field name="crop" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CoefficientOfInflation" objectid-class="CoefficientOfInflationId">
+            <field name="coefficientOfInflationId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+            <field name="season" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CostOfApplicationOfFertilizers" objectid-class="CostOfApplicationOfFertilizersId">
+            <field name="costOfApplicationOfFertilizersId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="applicationOfFertilizers" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CostOfCareOfCrops" objectid-class="CostOfCareOfCropsId">
+            <field name="costOfCareOfCropsId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="careOfCrops" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CostOfChemicalProtectionOfCrops" objectid-class="CostOfChemicalProtectionOfCropsId">
+            <field name="costOfChemicalProtectionOfCropsId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="chemicalProtectionOfCrops" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CostOfHarvesting" objectid-class="CostOfHarvestingId">
+            <field name="costOfHarvestingId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="harvesting" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CostOfMainProcessing" objectid-class="CostOfMainProcessingId">
+            <field name="costOfMainProcessingId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="mainProcessing" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CostOfPreseedingProcessingAndSowing" objectid-class="CostOfPreseedingProcessingAndSowingId">
+            <field name="costOfPreseedingProcessingAndSowingId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="preseedingProcessingAndSowing" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CostOfRawMaterialForChemicalProtection" objectid-class="CostOfRawMaterialForChemicalProtectionId">
+            <field name="costOfRawMaterialForChemicalProtectionId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="chemicalProtectionOfCrops" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CostOfSeed" objectid-class="CostOfSeedId">
+            <field name="costOfSeedId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="gradeOfCrop" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CostOnProductionFertilizer" objectid-class="CostOnProductionFertilizerId">
+            <field name="costOnProductionFertilizerId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="gradeOfCrop" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="Crop" objectid-class="CropId">
+            <field name="cropId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="groupOfCrops" persistence-modifier="persistent"></field>
+            <field name="applicationOfFertilizers_2_TypeOfSoil_2_LevelOfIntensification_2_Crop">
+                <collection element-type="ApplicationOfFertilizers_2_TypeOfSoil_2_LevelOfIntensification_2_Crop"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="crop"/>
+            </field>
+            <field name="chemicalProtectionOfCrops_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_F1_2_F2">
+                <collection element-type="ChemicalProtectionOfCrops_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="crop"/>
+            </field>
+            <field name="predecessor" persistence-modifier="persistent"></field>
+            <field name="mainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2">
+                <collection
+                        element-type="MainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="crop"/>
+            </field>
+            <field name="preseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2">
+                <collection
+                        element-type="PreseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="crop"/>
+            </field>
+            <field name="careOfCrops_2_LevelOfIntensification_2_Crop_2_F1_2_F2">
+                <collection element-type="CareOfCrops_2_LevelOfIntensification_2_Crop_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="crop"/>
+            </field>
+            <field name="harvesting_2_LevelOfIntensification_2_Crop_2_Factor">
+                <collection element-type="Harvesting_2_LevelOfIntensification_2_Crop_2_Factor"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="crop"/>
+            </field>
+            <field name="gradeOfCrop">
+                <collection element-type="GradeOfCrop"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="crop"/>
+            </field>
+            <field name="levelOfIntensificationToCropsToPredecessor">
+                <collection element-type="LevelOfIntensificationToCropsToPredecessors"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="crop"/>
+            </field>
+            <field name="productivity">
+                <collection element-type="Productivity"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="crop"/>
+            </field>
+            <field name="productivityCalculation">
+                <collection element-type="ProductivityCalculation"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="crop"/>
+            </field>
+             <field name="removalOfMicroelement">
+                  <collection element-type="RemovalOfMicroelement"/>
+                  <extension vendor-name="kodo" key="inverse-owner" value="crop"/>
+             </field>
+            <field name="groupOfCropsForCoeff" persistence-modifier="persistent"></field>
+            <field name="resultsFertilizers">
+                <collection element-type="ResultsFertilizers"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="agricultureField"/>
+            </field>
+        </class>
+
+        <class name="Crop_2_Agriculture" objectid-class="Crop_2_AgricultureId">
+            <field name="crop_2_AgricultureId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="crop" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="Crop_2_AgricultureField_2_Year" objectid-class="Crop_2_AgricultureField_2_YearId">
+            <field name="crop_2_AgricultureField_2_YearId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="crop" persistence-modifier="persistent"></field>
+            <field name="agricultureField" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CropRotation" objectid-class="CropRotationId">
+            <field name="cropRotationId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="viewOfCropRotation" persistence-modifier="persistent"></field>
+            <field name="cropRotation_2_GroupOfCrops_2_LevelOfIntensification_2_TypeOfSoil">
+                <collection element-type="CropRotation_2_GroupOfCrops_2_LevelOfIntensification_2_TypeOfSoil"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="cropRotation"/>
+            </field>
+            <field name="cropRotationOfAgriculture">
+                <collection element-type="CropRotationOfAgriculture"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="cropRotation"/>
+            </field>
+            <field name="cropRotationToGroupOfCropsToYear">
+                <collection element-type="CropRotationToGroupOfCropsToYear"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="cropRotation"/>
+            </field>
+        </class>
+
+        <class name="CropRotation_2_GroupOfCrops_2_LevelOfIntensification_2_TypeOfSoil"
+               objectid-class="CropRotation_2_GroupOfCrops_2_LevelOfIntensification_2_TypeOfSoilId">
+            <field name="cropRotation_2_GroupOfCrops_2_LevelOfIntensification_2_TypeOfSoilId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="cropRotation" persistence-modifier="persistent"></field>
+            <field name="groupOfCrops" persistence-modifier="persistent"></field>
+            <field name="levelOfIntensification" persistence-modifier="persistent"></field>
+            <field name="typeOfSoil" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CropRotationOfAgriculture" objectid-class="CropRotationOfAgricultureId">
+            <field name="cropRotationOfAgricultureId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="cropRotation" persistence-modifier="persistent"></field>
+            <field name="cropRotationOfAgriculture_2_AgricultureField">
+                <collection element-type="CropRotationOfAgriculture_2_AgricultureField"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="cropRotationOfAgriculture"/>
+            </field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CropRotationOfAgriculture_2_AgricultureField" objectid-class="CropRotationOfAgriculture_2_AgricultureFieldId">
+            <field name="cropRotationOfAgriculture_2_AgricultureFieldId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="cropRotationOfAgriculture" persistence-modifier="persistent"></field>
+            <field name="agricultureField" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CropRotationToGradeOfCropsToYear" objectid-class="CropRotationToGradeOfCropsToYearId">
+            <field name="cropRotationToGradeOfCropsToYearId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="cropRotation" persistence-modifier="persistent"></field>
+            <field name="gradeOfCrop" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CropRotationToGroupOfCropsToYear" objectid-class="CropRotationToGroupOfCropsToYearId">
+            <field name="cropRotationToGroupOfCropsToYearId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="cropRotation" persistence-modifier="persistent"></field>
+            <field name="groupOfCrops" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="GradeOfCrop" objectid-class="GradeOfCropId">
+            <field name="gradeOfCropId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="crop" persistence-modifier="persistent"></field>
+            <field name="costOfSeed">
+                <collection element-type="CostOfSeed"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="gradeOfCrop"/>
+            </field>
+            <field name="costOnProductionFertilizer">
+                <collection element-type="CostOnProductionFertilizer"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="gradeOfCrop"/>
+            </field>
+            <field name="gradeOfCrop_2_LevelOfIntensification_2_TypeOfSoil">
+                <collection element-type="GradeOfCrop_2_LevelOfIntensification_2_TypeOfSoil"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="gradeOfCrop"/>
+            </field>
+            <field name="standartTechnology">
+                <collection element-type="StandartTechnology"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="gradeOfCrop"/>
+            </field>
+        </class>
+
+        <class name="GradeOfCrop_2_Agriculture" objectid-class="GradeOfCrop_2_AgricultureId">
+            <field name="gradeOfCrop_2_AgricultureId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="gradeOfCrop" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="GradeOfCrop_2_LevelOfIntensification_2_TypeOfSoil"
+               objectid-class="GradeOfCrop_2_LevelOfIntensification_2_TypeOfSoilId">
+            <field name="gradeOfCrop_2_LevelOfIntensification_2_TypeOfSoilId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="gradeOfCrop" persistence-modifier="persistent"></field>
+            <field name="levelOfIntensification" persistence-modifier="persistent"></field>
+            <field name="typeOfSoil" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="GroupOfCrops" objectid-class="GroupOfCropsId">
+            <field name="groupOfCropsId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="crop">
+                <collection element-type="Crop"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="groupOfCrops"/>
+            </field>
+            <field name="cropRotation_2_GroupOfCrops_2_LevelOfIntensification_2_TypeOfSoil">
+                <collection element-type="CropRotation_2_GroupOfCrops_2_LevelOfIntensification_2_TypeOfSoil"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="groupOfCrops"/>
+            </field>
+            <field name="cropRotationToGroupOfCropsToYear">
+                <collection element-type="CropRotationToGroupOfCropsToYear"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="groupOfCrops"/>
+            </field>
+        </class>
+
+        <class name="GroupOfCrops_2_Agriculture" objectid-class="GroupOfCrops_2_AgricultureId">
+            <field name="groupOfCrops_2_AgricultureId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="groupOfCrops" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="GroupOfTypesOfSoils" objectid-class="GroupOfTypesOfSoilsId">
+            <field name="groupOfTypesOfSoilsId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="typeOfSoil">
+                <collection element-type="TypeOfSoil"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="groupOfTypesOfSoils"/>
+            </field>
+        </class>
+
+        <class name="Harvesting" objectid-class="HarvestingId">
+            <field name="harvestingId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="costOfHarvesting">
+                <collection element-type="CostOfHarvesting"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="harvesting"/>
+            </field>
+            <field name="standartTechnology">
+                <collection element-type="StandartTechnology"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="harvesting"/>
+            </field>
+            <field name="harvesting_2_LevelOfIntensification_2_Crop_2_Factor">
+                <collection element-type="Harvesting_2_LevelOfIntensification_2_Crop_2_Factor"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="harvesting"/>
+            </field>
+        </class>
+
+        <class name="Harvesting_2_Agriculture" objectid-class="Harvesting_2_AgricultureId">
+            <field name="harvesting_2_AgricultureId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="harvesting" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="Harvesting_2_LevelOfIntensification_2_Crop_2_Factor"
+               objectid-class="Harvesting_2_LevelOfIntensification_2_Crop_2_FactorId">
+            <field name="harvesting_2_LevelOfIntensification_2_Crop_2_FactorId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="harvesting" persistence-modifier="persistent"></field>
+            <field name="crop" persistence-modifier="persistent"></field>
+            <field name="levelOfIntensification" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="LandBase" objectid-class="LandBaseId">
+            <field name="landBaseId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+            <field name="landBase_2_agricultureField">
+                <collection element-type="LandBase_2_AgricultureField"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="landBase"/>
+            </field>
+            <field name="solutionsMode2">
+                <collection element-type="SolutionMode2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="landBase"/>
+            </field>
+            <field name="resultsMode1">
+                <collection element-type="ResultMode1"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="landBase"/>
+            </field>
+            <field name="agrochemicalSoilSurveys">
+                <collection element-type="AgrochemicalSoilSurvey"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="landBase"/>
+            </field>
+            <field name="solutions">
+                <collection element-type="OptimalLandSolution"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="landBase"/>
+            </field>
+        </class>
+
+        <class name="LandBase_2_AgricultureField"
+               objectid-class="LandBase_2_AgricultureFieldId">
+            <field name="landBase_2_AgricultureFieldId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="landBase" persistence-modifier="persistent"></field>
+            <field name="agricultureField" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="LevelOfIntensification" objectid-class="LevelOfIntensificationId">
+            <field name="levelOfIntensificationId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="applicationOfFertilizers_2_LevelOfIntensification">
+                <collection element-type="ApplicationOfFertilizers_2_LevelOfIntensification"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="levelOfIntensification"/>
+            </field>
+            <field name="applicationOfFertilizers_2_TypeOfSoil_2_LevelOfIntensification_2_Crop">
+                <collection element-type="ApplicationOfFertilizers_2_TypeOfSoil_2_LevelOfIntensification_2_Crop"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="levelOfIntensification"/>
+            </field>
+            <field name="chemicalProtectionOfCrops_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_F1_2_F2">
+                <collection
+                        element-type="ChemicalProtectionOfCrops_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="levelOfIntensification"/>
+            </field>
+            <field name="mainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2">
+                <collection
+                        element-type="MainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="levelOfIntensification"/>
+            </field>
+            <field name="preseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2">
+                <collection
+                        element-type="PreseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="levelOfIntensification"/>
+            </field>
+            <field name="careOfCrops_2_LevelOfIntensification_2_Crop_2_F1_2_F2">
+                <collection element-type="CareOfCrops_2_LevelOfIntensification_2_Crop_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="levelOfIntensification"/>
+            </field>
+            <field name="harvesting_2_LevelOfIntensification_2_Crop_2_Factor">
+                <collection element-type="Harvesting_2_LevelOfIntensification_2_Crop_2_Factor"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="levelOfIntensification"/>
+            </field>
+            <field name="cropRotation_2_GroupOfCrops_2_LevelOfIntensification_2_TypeOfSoil">
+                <collection element-type="CropRotation_2_GroupOfCrops_2_LevelOfIntensification_2_TypeOfSoil"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="levelOfIntensification"/>
+            </field>
+            <field name="gradeOfCrop_2_LevelOfIntensification_2_TypeOfSoil">
+                <collection element-type="GradeOfCrop_2_LevelOfIntensification_2_TypeOfSoil"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="levelOfIntensification"/>
+            </field>
+            <field name="levelOfIntensificationAndRecommendations">
+                <collection element-type="LevelOfIntensificationAndRecommendations"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="levelOfIntensification"/>
+            </field>
+            <field name="typeOfSoil_2_LevelOfIntensification">
+                <collection element-type="TypeOfSoil_2_LevelOfIntensification"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="levelOfIntensification"/>
+            </field>
+            <field name="standartTechnology">
+                <collection element-type="StandartTechnology"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="levelOfIntensification"/>
+            </field>
+            <field name="productivity">
+                <collection element-type="Productivity"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="levelOfIntensification"/>
+            </field>
+            <field name="productivityCalculation">
+                <collection element-type="ProductivityCalculation"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="levelOfIntensification"/>
+            </field>
+        </class>
+
+        <class name="LevelOfIntensificationAndRecommendations"
+               objectid-class="LevelOfIntensificationAndRecommendationsId">
+            <field name="levelOfIntensificationAndRecommendationsId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="levelOfIntensification" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="LevelOfIntensificationToCropsToPredecessors"
+               objectid-class="LevelOfIntensificationToCropsToPredecessorsId">
+            <field name="levelOfIntensificationToCropsToPredecessorsId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="crop" persistence-modifier="persistent"></field>
+            <field name="predecessor" persistence-modifier="persistent"></field>
+            <field name="levelOfIntensification" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="MainProcessing" objectid-class="MainProcessingId">
+            <field name="mainProcessingId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="costOfMainProcessing">
+                <collection element-type="CostOfMainProcessing"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="mainProcessing"/>
+            </field>
+            <field name="preseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2">
+                <collection
+                        element-type="PreseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="mainProcessing"/>
+            </field>
+            <field name="standartTechnology">
+                <collection element-type="StandartTechnology"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="mainProcessing"/>
+            </field>
+            <field name="mainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2">
+                <collection
+                        element-type="MainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="mainProcessing"/>
+            </field>
+        </class>
+
+        <class name="MainProcessing_2_Agriculture" objectid-class="MainProcessing_2_AgricultureId">
+            <field name="mainProcessing_2_AgricultureId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="mainProcessing" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="MainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2"
+               objectid-class="MainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2Id">
+            <field name="mainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2Id"
+                   primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="mainProcessing" persistence-modifier="persistent"></field>
+            <field name="levelOfIntensification" persistence-modifier="persistent"></field>
+            <field name="typeOfSoil" persistence-modifier="persistent"></field>
+            <field name="crop" persistence-modifier="persistent"></field>
+            <field name="predecessor" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="Point" objectid-class="PointId">
+            <field name="pointId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="field" persistence-modifier="persistent"></field>
+            <field name="point_2_Microelement_2_Method">
+                <collection element-type="Point_2_Microelement_2_Method"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="point"/>
+            </field>
+        </class>
+
+        <class name="Predecessor" objectid-class="PredecessorId">
+            <field name="predecessorId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="crop" persistence-modifier="persistent"></field>
+            <field name="mainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2">
+                <collection
+                        element-type="MainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="predecessor"/>
+            </field>
+            <field name="preseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2">
+                <collection
+                        element-type="PreseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="predecessor"/>
+            </field>
+            <field name="resultsFertilizers">
+                <collection element-type="ResultsFertilizers"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="agricultureField"/>
+            </field>
+        </class>
+
+        <class name="PreseedingProcessing_2_Agriculture" objectid-class="PreseedingProcessing_2_AgricultureId">
+            <field name="preseedingProcessing_2_AgricultureId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="preseedingProcessingAndSowing" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="PreseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2"
+               objectid-class="PreseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2Id">
+            <field name="preseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2Id"
+                   primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="preseedingProcessingAndSowing" persistence-modifier="persistent"></field>
+            <field name="levelOfIntensification" persistence-modifier="persistent"></field>
+            <field name="typeOfSoil" persistence-modifier="persistent"></field>
+            <field name="crop" persistence-modifier="persistent"></field>
+            <field name="predecessor" persistence-modifier="persistent"></field>
+            <field name="mainProcessing" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="PreseedingProcessingAndSowing" objectid-class="PreseedingProcessingAndSowingId">
+            <field name="preseedingProcessingAndSowingId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="costOfPreseedingProcessingAndSowing">
+                <collection element-type="CostOfPreseedingProcessingAndSowing"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="preseedingProcessingAndSowing"/>
+            </field>
+            <field name="standartTechnology">
+                <collection element-type="StandartTechnology"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="preseedingProcessingAndSowing"/>
+            </field>
+            <field name="preseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2">
+                <collection
+                        element-type="PreseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="preseedingProcessingAndSowing"/>
+            </field>
+        </class>
+
+        <class name="Productivity" objectid-class="ProductivityId">
+            <field name="productivityId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="crop" persistence-modifier="persistent"></field>
+            <field name="typeOfSoil" persistence-modifier="persistent"></field>
+            <field name="levelOfIntensification" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="ProductivityCalculation" objectid-class="ProductivityCalculationId">
+            <field name="productivityCalculationId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="crop" persistence-modifier="persistent"></field>
+            <field name="typeOfSoil" persistence-modifier="persistent"></field>
+            <field name="levelOfIntensification" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="ResultCropRotationMode2" objectid-class="ResultCropRotationMode2Id">
+            <field name="resultCropRotationMode2Id" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="solution" persistence-modifier="persistent"></field>
+            <field name="cropRotationOfAgriculture" persistence-modifier="persistent"></field>
+            <field name="resultsMode2">
+                <collection element-type="ResultMode2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="resultCropRotation"/>
+            </field>
+        </class>
+
+
+        <class name="ResultMode1" objectid-class="ResultMode1Id">
+            <field name="resultMode1Id" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="agricultureField" persistence-modifier="persistent"></field>
+            <field name="pred" persistence-modifier="persistent"></field>
+            <field name="rot" persistence-modifier="persistent"></field>
+            <field name="grade" persistence-modifier="persistent"></field>
+            <field name="level" persistence-modifier="persistent"></field>
+            <field name="mainP" persistence-modifier="persistent"></field>
+            <field name="preP" persistence-modifier="persistent"></field>
+            <field name="care" persistence-modifier="persistent"></field>
+            <field name="harv" persistence-modifier="persistent"></field>
+            <field name="fert" persistence-modifier="persistent"></field>
+            <field name="chem" persistence-modifier="persistent"></field>
+            <field name="st" persistence-modifier="persistent"></field>
+            <field name="landBase" persistence-modifier="persistent"></field>
+            <field name="resultsFertilizers" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="ResultMode2" objectid-class="ResultMode2Id">
+            <field name="resultMode2Id" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="resultCropRotation" persistence-modifier="persistent"></field>
+            <field name="agricultureField" persistence-modifier="persistent"></field>
+            <field name="pred" persistence-modifier="persistent"></field>
+            <field name="rot" persistence-modifier="persistent"></field>
+            <field name="grade" persistence-modifier="persistent"></field>
+            <field name="level" persistence-modifier="persistent"></field>
+            <field name="mainP" persistence-modifier="persistent"></field>
+            <field name="preP" persistence-modifier="persistent"></field>
+            <field name="care" persistence-modifier="persistent"></field>
+            <field name="harv" persistence-modifier="persistent"></field>
+            <field name="fert" persistence-modifier="persistent"></field>
+            <field name="chem" persistence-modifier="persistent"></field>
+            <field name="st" persistence-modifier="persistent"></field>
+        </class>
+
+
+        <class name="Season" objectid-class="SeasonId">
+            <field name="seasonId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="coefficientsInflation">
+                <collection element-type="CoefficientOfInflation"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="season"/>
+            </field>
+        </class>
+
+        <class name="SolutionMode2" objectid-class="SolutionMode2Id">
+            <field name="solutionMode2Id" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+            <field name="landBase" persistence-modifier="persistent"></field>
+            <field name="resultsCropRotation">
+                <collection element-type="ResultCropRotationMode2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="solution"/>
+            </field>
+        </class>
+
+
+        <class name="StandartTechnology" objectid-class="StandartTechnologyId">
+            <field name="standartTechnologyId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="levelOfIntensification" persistence-modifier="persistent"></field>
+            <field name="gradeOfCrop" persistence-modifier="persistent"></field>
+            <field name="mainProcessing" persistence-modifier="persistent"></field>
+            <field name="preseedingProcessingAndSowing" persistence-modifier="persistent"></field>
+            <field name="careOfCrops" persistence-modifier="persistent"></field>
+            <field name="harvesting" persistence-modifier="persistent"></field>
+            <field name="applicationOfFertilizers" persistence-modifier="persistent"></field>
+            <field name="chemicalProtectionOfCrops" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="SubtypeOfCropRotation" objectid-class="SubtypeOfCropRotationId">
+            <field name="subtypeOfCropRotationId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="typeOfCropRotation" persistence-modifier="persistent"></field>
+            <field name="subtypeOfCropRotation_2_ViewOfCropRotation">
+                <collection element-type="SubtypeOfCropRotation_2_ViewOfCropRotation"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="subtypeOfCropRotation"/>
+            </field>
+        </class>
+
+        <class name="SubtypeOfCropRotation_2_ViewOfCropRotation"
+               objectid-class="SubtypeOfCropRotation_2_ViewOfCropRotationId">
+            <field name="subtypeOfCropRotation_2_ViewOfCropRotationId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="subtypeOfCropRotation" persistence-modifier="persistent"></field>
+            <field name="viewOfCropRotation" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="TypeOfCropRotation" objectid-class="TypeOfCropRotationId">
+            <field name="typeOfCropRotationId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="subtypeOfCropRotation">
+                <collection element-type="SubtypeOfCropRotation"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="typeOfCropRotation"/>
+            </field>
+        </class>
+
+        <class name="TypeOfSoil" objectid-class="TypeOfSoilId">
+            <field name="typeOfSoilId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="groupOfTypesOfSoils" persistence-modifier="persistent"></field>
+            <field name="categoryOfTypesOfSoils" persistence-modifier="persistent"></field>
+            <field name="agricultureField">
+                <collection element-type="AgricultureField"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="typeOfSoil"/>
+            </field>
+            <field name="applicationOfFertilizers_2_TypeOfSoil_2_LevelOfIntensification_2_Crop">
+                <collection element-type="ApplicationOfFertilizers_2_TypeOfSoil_2_LevelOfIntensification_2_Crop"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="typeOfSoil"/>
+            </field>
+            <field name="chemicalProtectionOfCrops_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_F1_2_F2">
+                <collection
+                        element-type="ChemicalProtectionOfCrops_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="typeOfSoil"/>
+            </field>
+            <field name="mainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2">
+                <collection
+                        element-type="MainProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="typeOfSoil"/>
+            </field>
+            <field name="preseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2">
+                <collection
+                        element-type="PreseedingProcessing_2_TypeOfSoil_2_LevelOfIntensification_2_Crop_2_Predecessor_2_MainProcessing_2_F1_2_F2"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="typeOfSoil"/>
+            </field>
+            <field name="cropRotation_2_GroupOfCrops_2_LevelOfIntensification_2_TypeOfSoil">
+                <collection element-type="CropRotation_2_GroupOfCrops_2_LevelOfIntensification_2_TypeOfSoil"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="typeOfSoil"/>
+            </field>
+            <field name="gradeOfCrop_2_LevelOfIntensification_2_TypeOfSoil">
+                <collection element-type="GradeOfCrop_2_LevelOfIntensification_2_TypeOfSoil"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="typeOfSoil"/>
+            </field>
+            <field name="typeOfSoilAndRecommendations">
+                <collection element-type="TypeOfSoilAndRecommendations"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="typeOfSoil"/>
+            </field>
+            <field name="typeOfSoil_2_LevelOfIntensification">
+                <collection element-type="TypeOfSoil_2_LevelOfIntensification"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="typeOfSoil"/>
+            </field>
+            <field name="productivity">
+                <collection element-type="Productivity"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="typeOfSoil"/>
+            </field>
+            <field name="productivityCalculation">
+                <collection element-type="ProductivityCalculation"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="typeOfSoil"/>
+            </field>
+ 	<field name="humusMineralizationCoefficient_2_TypeOfSoil_2_GroupsOfCrops">
+ 		<collection element-type="HumusMineralizationCoefficient_2_TypeOfSoil_2_GroupsOfCrops"/>
+ 		<extension vendor-name="kodo" key="inverse-owner" value="typeOfSoil"/>
+ 	</field>
+        </class>
+
+        <class name="TypeOfSoil_2_Agriculture" objectid-class="TypeOfSoil_2_AgricultureId">
+            <field name="typeOfSoil_2_AgricultureId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="typeOfSoil" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="TypeOfSoil_2_LevelOfIntensification" objectid-class="TypeOfSoil_2_LevelOfIntensificationId">
+            <field name="typeOfSoil_2_LevelOfIntensificationId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="typeOfSoil" persistence-modifier="persistent"></field>
+            <field name="levelOfIntensification" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="TypeOfSoilAndRecommendations" objectid-class="TypeOfSoilAndRecommendationsId">
+            <field name="typeOfSoilAndRecommendationsId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-uto-increment" value="true"/>
+            </field>
+            <field name="typeOfSoil" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="User" objectid-class="UserId">
+            <field name="userId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="ViewOfCropRotation" objectid-class="ViewOfCropRotationId">
+            <field name="viewOfCropRotationId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="cropRotation">
+                <collection element-type="CropRotation"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="viewOfCropRotation"/>
+            </field>
+            <field name="subtypeOfCropRotation_2_ViewOfCropRotation">
+                <collection element-type="SubtypeOfCropRotation_2_ViewOfCropRotation"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="viewOfCropRotation"/>
+            </field>
+        </class>
+
+        <class name="AssociationTypes" objectid-class="AssociationTypesId">
+            <field name="associationTypesId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="resultFirstStage">
+                <collection element-type="ResultFirstStage"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="associationTypes"/>
+            </field>
+            <field name="associationtypes_2_TypeOfSoil_2_Agricultures">
+                <collection element-type="Associationtypes_2_TypeOfSoil_2_Agricultures"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="associationType"/>
+            </field>
+        </class>
+
+        <class name="Associationtypes_2_TypeOfSoil_2_Agricultures" objectid-class="Associationtypes_2_TypeOfSoil_2_AgriculturesId">
+            <field name="id" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="associationType" persistence-modifier="persistent"></field>
+            <field name="soil" persistence-modifier="persistent"></field>
+            <field name="agriculture" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="Money" objectid-class="MoneyId">
+            <field name="moneyId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="crop" persistence-modifier="persistent"></field>
+            <field name="levelOfIntensification" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="OptimalLandSolution" objectid-class="OptimalLandSolutionId">
+            <field name="id" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="state" persistence-modifier="persistent"></field>
+            <field name="landBase" persistence-modifier="persistent"></field>
+            <field name="plans">
+                <collection element-type="SolutionPlans"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="solution"/>
+            </field>
+            <field name="resultFirstStage">
+                <collection element-type="ResultFirstStage"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="solution"/>
+            </field>
+            <field name="resultSecondThirdStageAlgorithm1">
+                <collection element-type="ResultSecondThirdStage"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="optimalLandSolutionAlgorithm1"/>
+            </field>
+            <field name="resultSecondThirdStageAlgorithm2">
+                <collection element-type="ResultSecondThirdStage"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="optimalLandSolutionAlgorithm2"/>
+            </field>
+            <field name="resultSecondThirdStageAlgorithm3">
+                <collection element-type="ResultSecondThirdStage"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="optimalLandSolutionAlgorithm3"/>
+            </field>
+        </class>
+
+        <class name="SolutionPlans" objectid-class="SolutionPlansId">
+            <field name="id" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="solution" persistence-modifier="persistent"></field>
+            <field name="crop" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="ResultFirstStage" objectid-class="ResultFirstStageId">
+            <field name="id" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="solution" persistence-modifier="persistent"></field>
+            <field name="typeOfSoil" persistence-modifier="persistent"></field>
+            <field name="crop" persistence-modifier="persistent"></field>
+            <field name="associationTypes" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="ResultSecondThirdStage" objectid-class="ResultSecondThirdStageId">
+            <field name="id" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="optimalLandSolutionAlgorithm1" persistence-modifier="persistent"></field>
+            <field name="optimalLandSolutionAlgorithm2" persistence-modifier="persistent"></field>
+            <field name="optimalLandSolutionAlgorithm3" persistence-modifier="persistent"></field>
+            <field name="typeOfSoil" persistence-modifier="persistent"></field>
+            <field name="crop" persistence-modifier="persistent"></field>
+            <field name="agricultureField" persistence-modifier="persistent"></field>
+            <field name="levelOfIntensification" persistence-modifier="persistent"></field>
+        </class>
+
+         <class name="SolutionState" objectid-class="SolutionStateId">
+            <field name="stateId" primary-key="true">
+                <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+        </class>
+
+        <class name="Microelement" objectid-class="MicroelementId">
+            <field name="microelementId" primary-key="true">
+                 <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="microelementName" persistence-modifier="persistent"></field>
+            <field name="applicationOfFertilizers_2_microelement">
+                <collection element-type="ApplicationOfFertilizers_2_Microelement"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="microelement"/>
+            </field>
+            <field name="removalOfMicroelement">
+                  <collection element-type="RemovalOfMicroelement"/>
+                  <extension vendor-name="kodo" key="inverse-owner" value="microelement"/>
+            </field>
+            <field name="coefficientOfUsingMicroelementFromFert">
+                <collection element-type="CoefficientOfUsingMicroelementFromFert"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="microelement"/>
+            </field>
+            <field name="coefficientOfUsingMicroelementFromSoil">
+                <collection element-type="CoefficientOfUsingMicroelementFromSoil"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="microelement"/>
+            </field>
+            <field name="correctiveCoefficients">
+                <collection element-type="CorrectiveCoefficients"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="microelement"/>
+            </field>
+            <field name="gropsMicroelement">
+                <collection element-type="GroupMicroelements"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="microelement"/>
+            </field>
+            <field name="point_2_Microelement_2_Method">
+                <collection element-type="Point_2_Microelement_2_Method"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="microelement"/>
+            </field>
+        </class>
+
+        <class name="ResultsFertilizers" objectid-class="ResultsFertilizersId">
+            <field name="resultsFertilizersId" primary-key="true">
+                 <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="date" persistence-modifier="persistent"></field>
+            <field name="resultsFertilizersName" persistence-modifier="persistent"></field>
+            <field name="resultMode1" persistence-modifier="persistent"></field>
+            <field name="agricultureField" persistence-modifier="persistent"></field>
+            <field name="crop" persistence-modifier="persistent"></field>
+            <field name="pred" persistence-modifier="persistent"></field>
+            <field name="systFert" persistence-modifier="persistent"></field>
+            <field name="palnningYield" persistence-modifier="persistent"></field>
+            <field name="predDoze" persistence-modifier="persistent"></field>
+            <field name="predYeild" persistence-modifier="persistent"></field>
+            <field name="average_h" persistence-modifier="persistent"></field>
+            <field name="average_p" persistence-modifier="persistent"></field>
+            <field name="average_ph" persistence-modifier="persistent"></field>
+            <field name="removal_n" persistence-modifier="persistent"></field>
+            <field name="removal_p" persistence-modifier="persistent"></field>
+            <field name="removal_ph" persistence-modifier="persistent"></field>
+            <field name="yearOfUsing" persistence-modifier="persistent"></field>
+            <field name="coeffFromFertN" persistence-modifier="persistent"></field>
+            <field name="coeffFromFertP" persistence-modifier="persistent"></field>
+            <field name="coeffFromFertPh" persistence-modifier="persistent"></field>
+            <field name="coeffFromSoilN" persistence-modifier="persistent"></field>
+            <field name="coeffFromSoilP" persistence-modifier="persistent"></field>
+            <field name="coeffFromSoilPh" persistence-modifier="persistent"></field>
+            <field name="takeaway_N" persistence-modifier="persistent"></field>
+            <field name="takeaway_P" persistence-modifier="persistent"></field>
+            <field name="takeaway_Ph" persistence-modifier="persistent"></field>
+            <field name="m" persistence-modifier="persistent"></field>
+            <field name="ph_Content" persistence-modifier="persistent"></field>
+            <field name="p_Content" persistence-modifier="persistent"></field>
+            <field name="value_humus" persistence-modifier="persistent"></field>
+            <field name="value_of_nitrogen_in_humus" persistence-modifier="persistent"></field>
+            <field name="value_forms_of_nitrogen" persistence-modifier="persistent"></field>
+            <field name="number_digestible_N" persistence-modifier="persistent"></field>
+            <field name="number_digestible_P" persistence-modifier="persistent"></field>
+            <field name="number_digestible_Ph" persistence-modifier="persistent"></field>
+            <field name="real_possible_harvest_N" persistence-modifier="persistent"></field>
+            <field name="real_possible_harvest_P" persistence-modifier="persistent"></field>
+            <field name="real_possible_harvest_Ph" persistence-modifier="persistent"></field>
+            <field name="absorption" persistence-modifier="persistent"></field>
+            <field name="accumulated_balance" persistence-modifier="persistent"></field>
+            <field name="accumulated_balance_in_soil" persistence-modifier="persistent"></field>
+            <field name="common_amount_of_digestible_N" persistence-modifier="persistent"></field>
+            <field name="common_amount_of_digestible_Ph" persistence-modifier="persistent"></field>
+            <field name="common_amount_of_digestible_P" persistence-modifier="persistent"></field>
+            <field name="accumulated_balance_in_leavings" persistence-modifier="persistent"></field>
+            <field name="need_in_N" persistence-modifier="persistent"></field>
+            <field name="need_in_Ph" persistence-modifier="persistent"></field>
+            <field name="need_in_P" persistence-modifier="persistent"></field>
+            <field name="additional_N" persistence-modifier="persistent"></field>
+            <field name="additional_P" persistence-modifier="persistent"></field>
+            <field name="additional_Ph" persistence-modifier="persistent"></field>
+            <field name="coeff1_requirement" persistence-modifier="persistent"></field>
+            <field name="coeff2_requirement" persistence-modifier="persistent"></field>
+            <field name="coeff3_requirement" persistence-modifier="persistent"></field>
+            <field name="isAgrSyst" persistence-modifier="persistent"></field>
+            <field name="applicationOfFertilizers_2_microelements_2_resultsFertilizers">
+                <collection element-type="ApplicationOfFertilizers_2_Microelements_2_ResultsFertilizers"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="resultsFertilizers"/>
+            </field>
+        </class>
+
+        <class name="ApplicationOfFertilizers_2_Microelement" objectid-class="ApplicationOfFertilizers_2_MicroelementId">
+            <field name="applicationOfFertilizers_2_MicroelementId" primary-key="true">
+                 <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="microelement" persistence-modifier="persistent"></field>
+            <field name="applicationOfFertilizers" persistence-modifier="persistent"></field>
+            <field name="applicationOfFertilizers_2_microelements_2_resultsFertilizers">
+                <collection element-type="ApplicationOfFertilizers_2_Microelements_2_ResultsFertilizers"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="applicationOfFertilizers_2_microelements"/>
+            </field>
+        </class>
+
+        <class name="ApplicationOfFertilizers_2_Microelements_2_ResultsFertilizers" objectid-class="ApplicationOfFertilizers_2_Microelements_2_ResultsFertilizersId">
+            <field name="applicationOfFertilizers_2_Microelements_2_ResultsFertilizersId" primary-key="true">
+                 <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="resultsFertilizers" persistence-modifier="persistent"></field>
+            <field name="applicationOfFertilizers_2_microelements" persistence-modifier="persistent"></field>
+            <field name="date" persistence-modifier="persistent"></field>
+            <field name="correctionResult">
+                <collection element-type="CorrectionResult"/>
+                <extension vendor-name="kodo" key="inverse-owner" value="application_of_fertilizers_2_microel_2_res_fert"/>
+            </field>
+        </class>
+
+        <class name="RemovalOfMicroelement" objectid-class="RemovalOfMicroelementId">
+            <field name="removalOfMicroelementId" primary-key="true">
+                 <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="crop" persistence-modifier="persistent"></field>
+            <field name="microelement" persistence-modifier="persistent"></field>
+            <field name="value" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CoefficientOfUsingMicroelementFromFert" objectid-class="CoefficientOfUsingMicroelementFromFertId">
+            <field name="coefficientOfUsingMicroelementFromFertId" primary-key="true">
+                 <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="microelement" persistence-modifier="persistent"></field>
+            <field name="yearOfUsing" persistence-modifier="persistent"></field>
+            <field name="minValue" persistence-modifier="persistent"></field>
+            <field name="maxValue" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="CoefficientOfUsingMicroelementFromSoil" objectid-class="CoefficientOfUsingMicroelementFromSoilId">
+            <field name="coefficientOfUsingMicroelementFromSoilId" primary-key="true">
+                 <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="microelement" persistence-modifier="persistent"></field>
+            <field name="amountInSoil" persistence-modifier="persistent"></field>
+            <field name="value" persistence-modifier="persistent"></field>
+        </class>
+
+        <class name="Month" objectid-class="MonthId">
+            <field name="monthId" primary-key="true">
+                 <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="nameMonth" persistence-modifier="persistent"></field>
+            <field name="correctionResult">
+                    <collection element-type="CorrectionResult"/>
+                    <extension vendor-name="kodo" key="jdbc-field-map" value="many-many">
+                        <extension vendor-name="kodo" key="element-column.id_month"
+                            value="id_month"/>
+                        <extension vendor-name="kodo" key="table" value="correction_result_2_month"/>
+                        <extension vendor-name="kodo" key="ref-column.id_correction_result" value="id_correction_result"/>
+                    </extension>
+            </field>
+        </class>
+
+        <class name="CorrectionResult" objectid-class="CorrectionResultId">
+            <field name="correctionResultId" primary-key="true">
+                 <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+            </field>
+            <field name="application_of_fertilizers_2_microel_2_res_fert" persistence-modifier="persistent"></field>
+            <field name="date"></field>
+            <field name="temperature"></field>
+            <field name="humid"></field>
+            <field name="months">
+                    <collection element-type="Month"/>
+                    <extension vendor-name="kodo" key="jdbc-field-map" value="many-many">
+                        <extension vendor-name="kodo" key="element-column.id_correction_result"
+                            value="id_correction_result"/>
+                        <extension vendor-name="kodo" key="table" value="correction_result_2_month"/>
+                        <extension vendor-name="kodo" key="ref-column.id_month" value="id_month"/>
+                    </extension>
+            </field>
+        </class>
+
+    <class name="HumusMineralizationCoefficient" objectid-class="HumusMineralizationCoefficientId">
+    	<field name="idHumusMineralizationCoefficient" primary-key="true">
+    		 <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+    	</field>
+    	<field name="cmhValue" persistence-modifier="persistent"></field>
+            	<field name="nValue" persistence-modifier="persistent"></field>
+    	<field name="humusMineralizationCoefficient_2_TypeOfSoil_2_GroupsOfCrops">
+    		<collection element-type="HumusMineralizationCoefficient_2_TypeOfSoil_2_GroupsOfCrops"/>
+    		<extension vendor-name="kodo" key="inverse-owner" value="humusMineralizationCoefficient"/>
+    	</field>
+    </class>
+
+    <class name="HumusMineralizationCoefficient_2_TypeOfSoil_2_GroupsOfCrops" objectid-class="HumusMineralizationCoefficient_2_TypeOfSoil_2_GroupsOfCropsId">
+    	<field name="id" primary-key="true">
+    		 <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+    	</field>
+    	<field name="humusMineralizationCoefficient" persistence-modifier="persistent"></field>
+    	<field name="typeOfSoil" persistence-modifier="persistent"></field>
+    	<field name="groupOfCrops" persistence-modifier="persistent"></field>
+    </class>
+
+    <class name="GroupOfCropForCoeff" objectid-class="GroupOfCropForCoeffId">
+    	<field name="idGroupOfCropForCoeff" primary-key="true">
+    		 <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+    	</field>
+    	<field name="crops">
+            <collection element-type="Crop"/>
+            <extension vendor-name="kodo" key="inverse-owner" value="groupOfCropsForCoeff"/>
+        </field>
+    	<field name="humusMineralizationCoefficient_2_TypeOfSoil_2_GroupsOfCrops">
+    		<collection element-type="HumusMineralizationCoefficient_2_TypeOfSoil_2_GroupsOfCrops"/>
+    		<extension vendor-name="kodo" key="inverse-owner" value="groupOfCrops"/>
+    	</field>
+        <field name="correctiveCoefficients">
+    		<collection element-type="CorrectiveCoefficients"/>
+    		<extension vendor-name="kodo" key="inverse-owner" value="groupOfCrop"/>
+    	</field>
+    </class>
+
+    <class name="CorrectiveCoefficients" objectid-class="CorrectiveCoefficientsId">
+    	<field name="idCorrectiveCoefficients" primary-key="true">
+    		 <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+    	</field>
+    	<field name="microelement" persistence-modifier="persistent"></field>
+    	<field name="groupOfCrop" persistence-modifier="persistent"></field>
+    </class>
+
+    <class name="GroupMicroelements" objectid-class="GroupMicroelementsId">
+        <field name="idGroup" primary-key="true">
+             <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+        </field>
+        <field name="method" persistence-modifier="persistent"></field>
+        <field name="microelement" persistence-modifier="persistent"></field>
+    </class>
+
+    <class name="Method" objectid-class="MethodId">
+        <field name="idMethod" primary-key="true">
+             <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+        </field>
+        <field name="gropsMicroelement">
+            <collection element-type="GroupMicroelements"/>
+            <extension vendor-name="kodo" key="inverse-owner" value="method"/>
+        </field>
+        <field name="point_2_Microelement_2_Method">
+            <collection element-type="Point_2_Microelement_2_Method"/>
+            <extension vendor-name="kodo" key="inverse-owner" value="method"/>
+        </field>
+    </class>
+
+    <class name="Point_2_Microelement_2_Method" objectid-class="Point_2_Microelement_2_MethodId">
+        <field name="id" primary-key="true">
+             <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+        </field>
+        <field name="point" persistence-modifier="persistent"></field>
+        <field name="microelement" persistence-modifier="persistent"></field>
+        <field name="method" persistence-modifier="persistent"></field>
+    </class>
+
+    <class name="MetaData" objectid-class="MetaDataId">
+        <field name="idMetaData" primary-key="true">
+             <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+        </field>
+        <field name="userDataToBaseData">
+            <collection element-type="UserDataToBaseData"/>
+            <extension vendor-name="kodo" key="inverse-owner" value="metaData"/>
+        </field>
+    </class>
+
+    <class name="UserDataToBaseData" objectid-class="UserDataToBaseDataId">
+        <field name="id" primary-key="true">
+             <extension vendor-name="kodo" key="jdbc-auto-increment" value="true"/>
+        </field>
+        <field name="agriculture" persistence-modifier="persistent"></field>
+        <field name="metaData" persistence-modifier="persistent"></field>
+    </class>
+
+    </package>
+
+</jdo>
+

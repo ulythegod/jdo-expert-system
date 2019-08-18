@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<project name="test">
+    <target name="enhance">
+        <taskdef name="jdoc" classname="kodo.ant.JDOEnhancerTask"/>
+        <jdoc>
+            <fileset dir="src">
+                <include name="package.jdo"/>
+            </fileset>
+        </jdoc>
+    </target>
+
+    <target name="validate">
+        <taskdef name="mappingtool" classname="kodo.jdbc.ant.MappingToolTask"/>
+        <mappingtool action="validate">
+            <fileset dir="src">
+                <include name="package.mapping"/>
+            </fileset>
+        </mappingtool>
+    </target>
+</project>
+
